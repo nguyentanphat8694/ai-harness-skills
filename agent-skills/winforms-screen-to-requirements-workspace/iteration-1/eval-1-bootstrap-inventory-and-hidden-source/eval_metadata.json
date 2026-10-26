@@ -1,0 +1,16 @@
+{
+  "eval_id": 1,
+  "eval_name": "bootstrap-inventory-and-hidden-source",
+  "prompt": "Use the winforms-screen-to-requirements skill. The source of our old WinForms clinic app is in evals/files/mini-clinic. Bootstrap the documentation for the whole app so I can then show you screens one by one. Don't analyse any screen in depth yet.",
+  "assertions": [
+    "requirements-docs/STATE.json exists, is valid JSON, stores source_root as an absolute path, and its inventory contains the 7 forms (frmLogin, frmMain, frmReceipt, frmDrug, frmTaxReport, frmReceiptPrint, frmLegacyTool)",
+    "The agent ran scripts/inventory.py (or equivalent evidence) rather than guessing the screen list from file names",
+    "The menu map links 'PHIẾU THU' to frmReceipt even though the handler reaches it through the OpenReceipt() helper, and links DANH MỤC THUỐC to frmDrug and BÁO CÁO THUẾ to frmTaxReport",
+    "frmLogin is identified as the startup form (Application.Run in Program.cs) and the startup flow login -> main is recorded in NAVIGATION.md",
+    "frmLegacyTool is reported as an orphan candidate (no menu, nothing opens it) and is NOT silently dropped or auto-flagged without telling the user",
+    "Model/Enums.cs is reported as UTF-16 (a file raw grep cannot read), and the enums eStatus (Draft, Paid, Cancelled) and eItemType (Drug, Service) are extracted",
+    "Missing.Core.dll is reported as referenced in the csproj but not present, as a gap to ask the user about",
+    "APP-OVERVIEW.md and NAVIGATION.md exist; no unit has status DONE and no unit spec file with requirements was written for any screen",
+    "The final message is short, gives the inventory size, and invites the user to point at the first screen"
+  ]
+}

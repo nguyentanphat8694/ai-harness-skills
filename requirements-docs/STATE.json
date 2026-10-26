@@ -1,7 +1,7 @@
 {
   "schema": 2,
   "root": "requirements-docs",
-  "source_root": "src",
+  "source_root": "/Users/phatnguyen/Downloads/ai-harness-skills/src",
   "hash_method": "sha1-lf",
   "doc_language": "en",
   "counters": {
@@ -1096,6 +1096,17 @@
       ],
       "caption": "",
       "unit": null
+    },
+    "RPT:RP020100": {
+      "type": "RPT",
+      "class": "RP020100",
+      "base": "DevExpress.XtraReports.UI.XtraReport",
+      "files": [
+        "Hospita.View/Report/RP020100.cs",
+        "Hospita.View/Report/RP020100.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
     }
   },
   "units": {
@@ -1455,6 +1466,15 @@
       "in_form": "frmMain"
     },
     {
+      "caption": "In Phiếu (Ctrl+P)",
+      "control": "btIn",
+      "handler": "btIn_ItemClick",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "USA2"
+    },
+    {
       "caption": "DANH SÁCH CHỜ SIÊU ÂM",
       "control": "btDanhSachDangKy",
       "handler": "btDanhSachDangKy_ItemClick",
@@ -1471,6 +1491,15 @@
         "frmDSSieuAm"
       ],
       "in_form": "SA000000"
+    },
+    {
+      "caption": "In Phiếu (Ctrl+P)",
+      "control": "btIn",
+      "handler": "btIn_ItemClick",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "frmSieuAm"
     },
     {
       "caption": "Chuyển dịch vụ",
@@ -1509,6 +1538,42 @@
       "in_form": "XN000000"
     },
     {
+      "caption": "IN PHIẾU XÉT NGHIỆM",
+      "control": "btInChiDinh",
+      "handler": "btInChiDinh_Click",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "UPhieuXetNghiem"
+    },
+    {
+      "caption": "In báo cáo theo bác sĩ",
+      "control": "btInTheoBacSi",
+      "handler": "btInTheoBacSi_Click",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "UTKKhamBenh"
+    },
+    {
+      "caption": "In báo cáo theo dịch vụ",
+      "control": "btInTheoDichVu",
+      "handler": "btInTheoDichVu_Click",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "UTKKhamBenh"
+    },
+    {
+      "caption": "In báo cáo theo bệnh nhân",
+      "control": "btInTheoBenhNhan",
+      "handler": "btInTheoBenhNhan_Click",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "UTKKhamBenh"
+    },
+    {
       "caption": "BÁO CÁO TỒN KHO",
       "control": "btBaoCaoTonKho",
       "handler": "btBaoCaoTonKho_ItemClick",
@@ -1527,6 +1592,24 @@
       "in_form": "FrmMainBenhAn"
     },
     {
+      "caption": "In Chỉ Định (F2)",
+      "control": "btInChiDinh",
+      "handler": "btInChiDinh_ItemClick",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "FrmPhieuKhamChung"
+    },
+    {
+      "caption": "In Giấy Giới Thiệu Vào Viện (F4)",
+      "control": "btInGiayVV",
+      "handler": "btInGiayVV_ItemClick",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "FrmPhieuKhamChung"
+    },
+    {
       "caption": "Lập Phiếu Tạm Ứng",
       "control": "btnLapPhieuTU",
       "handler": "btnLapPhieuTU_ItemClick",
@@ -1534,6 +1617,24 @@
         "FrmTamUng"
       ],
       "in_form": "FrmPhieuKhamChung"
+    },
+    {
+      "caption": "In Chỉ Định (F2)",
+      "control": "btInChiDinh",
+      "handler": "btInChiDinh_ItemClick",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "frmBenhAn"
+    },
+    {
+      "caption": "In Giấy Giới Thiệu Vào Viện (F4)",
+      "control": "btInGiayVV",
+      "handler": "btInGiayVV_ItemClick",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "frmBenhAn"
     },
     {
       "caption": "Lập Phiếu Tạm Ứng",
@@ -1824,6 +1925,15 @@
       "in_form": "UT010100"
     },
     {
+      "caption": "IN PHIẾU THU",
+      "control": "btIn",
+      "handler": "btIn_Click",
+      "opens": [
+        "RP020100"
+      ],
+      "in_form": "frmPhieuThu"
+    },
+    {
       "caption": "DANH SÁCH CHỜ THU TIỀN",
       "control": "btDanhSachDangKy",
       "handler": "btDanhSachDangKy_ItemClick",
@@ -2016,6 +2126,48 @@
       ]
     },
     {
+      "in_form": "USA2",
+      "handler": "btInToaThuoc_Click",
+      "opens": [
+        "RP020100"
+      ]
+    },
+    {
+      "in_form": "frmSieuAm",
+      "handler": "btInToaThuoc_Click",
+      "opens": [
+        "RP020100"
+      ]
+    },
+    {
+      "in_form": "FrmPhieuKhamChung",
+      "handler": "btInChiDinh_Click",
+      "opens": [
+        "RP020100"
+      ]
+    },
+    {
+      "in_form": "FrmPhieuKhamChung",
+      "handler": "btInGiayVV_Click",
+      "opens": [
+        "RP020100"
+      ]
+    },
+    {
+      "in_form": "frmBenhAn",
+      "handler": "btInChiDinh_Click",
+      "opens": [
+        "RP020100"
+      ]
+    },
+    {
+      "in_form": "frmBenhAn",
+      "handler": "btInGiayVV_Click",
+      "opens": [
+        "RP020100"
+      ]
+    },
+    {
       "in_form": "BA000000",
       "handler": "btDangKy_ItemClick",
       "opens": [
@@ -2050,5 +2202,1665 @@
         "frmDSDangKy"
       ]
     }
+  ],
+  "callers": {
+    "UDaKham": [
+      {
+        "file": "UDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSDaKham",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmDSPhieuXN": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "XN000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "frmPhieuThu": [
+      {
+        "file": "UDSChoThuTien",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UDSDaThu",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UMauBA": [
+      {
+        "file": "FrmPhieuKhamChung",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "USA2",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmSieuAm",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UMainThuTien": [
+      {
+        "file": "FrmMainDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmDSChoXN": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "XN000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSChoTH",
+        "kinds": [
+          "string"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMNhomDichVu": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMICD": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "frmDSChoThuTien": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "DK000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "TT000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "UDSPhieuXN": [
+      {
+        "file": "UPhieuXetNghiem",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSPhieuXN",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMLK": [
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      }
+    ],
+    "frmDSDaKham": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "FrmTamUng": [
+      {
+        "file": "FrmPhieuKhamChung",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmDSDangKy": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "DK000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "UDSDangKy",
+        "kinds": [
+          "string"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "BA000000": [],
+    "frmDSChoKham": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSChoXN",
+        "kinds": [
+          "string"
+        ]
+      },
+      {
+        "file": "frmDSPhieuXN",
+        "kinds": [
+          "string"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "RP010100": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new"
+        ]
+      },
+      {
+        "file": "LO010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new"
+        ]
+      }
+    ],
+    "UT010100": [
+      {
+        "file": "FrmPhieuKhamChung",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "USA2",
+        "kinds": [
+          "type"
+        ]
+      },
+      {
+        "file": "frmBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmSieuAm",
+        "kinds": [
+          "type"
+        ]
+      }
+    ],
+    "LO030100": [
+      {
+        "file": "LO010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new"
+        ]
+      }
+    ],
+    "UDangKy": [
+      {
+        "file": "FrmMainBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "FrmMainDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "CD020100": [
+      {
+        "file": "UDSDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UNewCapture": [],
+    "Frm_DMKho": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "LO010100": [
+      {
+        "file": "Program",
+        "kinds": [
+          "new"
+        ]
+      }
+    ],
+    "UImage": [
+      {
+        "file": "UImages",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "SA000000": [
+      {
+        "file": "LO010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmMain": [
+      {
+        "file": "LO010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmBenhAn": [
+      {
+        "file": "UChoKham",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UD010100",
+        "kinds": [
+          "static"
+        ]
+      },
+      {
+        "file": "UDSChoKham",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UDaKham",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UTKKhamBenh",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmSieuAm",
+        "kinds": [
+          "static"
+        ]
+      }
+    ],
+    "TI010100": [],
+    "UD010100": [
+      {
+        "file": "CD020100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "FrmPhieuKhamChung",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UDSChoXN": [
+      {
+        "file": "UPhieuXetNghiem",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSChoXN",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UNhatKy": [
+      {
+        "file": "FrmPhieuKhamChung",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UBenhNhan",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UDSDaThu": [
+      {
+        "file": "UMainThuTien",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSDaThu",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmDSHenKham": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "DK000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSDangKy",
+        "kinds": [
+          "string"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "UPhieuXetNghiem": [
+      {
+        "file": "FrmMainBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "FrmMainDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmPhieuXetNghiem",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "FrmMainDangKy": [
+      {
+        "file": "LO010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "FrmBCTonKho": [
+      {
+        "file": "FrmMainBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "FrmMainDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "FormCommon": [],
+    "Frm_DMDichVu": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "DK000000": [
+      {
+        "file": "TT000000",
+        "kinds": [
+          "string"
+        ]
+      }
+    ],
+    "Frm_DMTSo": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "BN010100": [
+      {
+        "file": "UDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UBenhNhan": [
+      {
+        "file": "UDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmSieuAm": [
+      {
+        "file": "UChoSA",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UD010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UDichVuUtils",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "USieuAm",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UTimBN": [],
+    "UTKKhamBenh": [
+      {
+        "file": "FrmMainBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "FrmMainDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmTKKhamBenh",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "FrmCapNhatNo": [
+      {
+        "file": "UBenhNhan",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmDSDaThu": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "DK000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "TT000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "BN020100": [
+      {
+        "file": "UBenhNhan",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UDSDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMNhomXetNghiem": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "USieuAm": [
+      {
+        "file": "UDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UMainSA",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSSieuAm",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UDSDangKy": [
+      {
+        "file": "UDangKy",
+        "kinds": [
+          "type"
+        ]
+      }
+    ],
+    "frmKey": [],
+    "frmDSSieuAm": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "SA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMPK": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "LO020100": [
+      {
+        "file": "LO010100",
+        "kinds": [
+          "string"
+        ]
+      },
+      {
+        "file": "LO030100",
+        "kinds": [
+          "string"
+        ]
+      }
+    ],
+    "USA2": [
+      {
+        "file": "FrmPhieuKhamChung",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmPhieuXetNghiem": [
+      {
+        "file": "UDSPhieuXN",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSChoTH",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UChoSA": [
+      {
+        "file": "UDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UMainSA",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSChoSA",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "XN000000": [
+      {
+        "file": "LO010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "FrmQLyXetNghiemSimple": [],
+    "USANew": [],
+    "FrmMainBenhAn": [
+      {
+        "file": "LO010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "RP020100": [
+      {
+        "file": "FrmPhieuKhamChung",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "Main_Text",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "RP010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "UNhatKy",
+        "kinds": [
+          "type"
+        ]
+      },
+      {
+        "file": "UPhieuXetNghiem",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "USA2",
+        "kinds": [
+          "type"
+        ]
+      },
+      {
+        "file": "UTKKhamBenh",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmPhieuThu",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmSieuAm",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UDSChoThuTien": [
+      {
+        "file": "UMainThuTien",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSChoThuTien",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UMainSA": [
+      {
+        "file": "FrmMainBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMUser_Nhom": [
+      {
+        "file": "Frm_DMUser",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmDangKy": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "DK000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMUser": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "frmNhapkho": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "DK000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "USA_Capture": [],
+    "frmLichLamViec": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "UDichVuUtils": [],
+    "UGoTat": [
+      {
+        "file": "FrmPhieuKhamChung",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmTKKhamBenh": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMMau": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "FrmChucNangLLV": [],
+    "frmText": [
+      {
+        "file": "UT010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "FrmChuyenDichVu": [
+      {
+        "file": "frmSieuAm",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UDSChoKham": [],
+    "Frm_DMQuan": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "UHenKham": [],
+    "ULichLamViec": [
+      {
+        "file": "FrmMainBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "FrmMainDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmLichLamViec",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmDSChoTH": [],
+    "TT000000": [
+      {
+        "file": "LO010100",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMXetNghiem": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "WebCamCapture": [
+      {
+        "file": "USA_Capture",
+        "kinds": [
+          "static",
+          "string",
+          "type"
+        ]
+      }
+    ],
+    "UNhapKho": [
+      {
+        "file": "FrmMainBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "FrmMainDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmNhapkho",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UImages": [
+      {
+        "file": "USA2",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmSieuAm",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "CD010100": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "UChoKham": [
+      {
+        "file": "UDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "frmDSChoKham",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMNhanSu": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "frmDSChoSA": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "SA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMThuoc": [
+      {
+        "file": "FrmMainBenhAn",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      },
+      {
+        "file": "FrmMainDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "UNgay": [
+      {
+        "file": "ULichLamViec",
+        "kinds": [
+          "new"
+        ]
+      }
+    ],
+    "UTKSuDungThuoc": [],
+    "FrmPhieuKhamChung": [
+      {
+        "file": "UDangKy",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMNgheNghiep": [
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMTinh": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ],
+    "Frm_DMDonVi": [
+      {
+        "file": "BA000000",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      },
+      {
+        "file": "LO020100",
+        "kinds": [
+          "new",
+          "string",
+          "type"
+        ]
+      },
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "static",
+          "type"
+        ]
+      }
+    ]
+  },
+  "entry_points": [
+    "LO010100"
   ]
 }

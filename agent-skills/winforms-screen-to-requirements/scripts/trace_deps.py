@@ -37,6 +37,16 @@ PATTERNS = {
 }
 
 
+def project_classes(src):
+    """Names of all classes defined in the source tree (so calls into them can be listed as leads
+    whatever naming convention the project uses: NTPObX, MainNTP, KeysListObX, ...)."""
+    names = set()
+    for f in walk_source(src, {".cs", ".vb"}):
+        names.update(re.findall(r"\bclass\s+(\w+)", read_text(f)))
+        names.update(re.findall(r"\bClass\s+(\w+)", read_text(f)))
+    return names
+
+
 def resolve(src, target):
     p = Path(target)
     if p.exists():
@@ -69,6 +79,14 @@ def main():
                 val = next((g for g in m.groups() if g), m.group(0)).strip()
                 line = text.count("\n", 0, m.start()) + 1
                 out["leads"].setdefault(key, {}).setdefault(val, []).append(f"{f.name}:{line}")
+    # Calls into project classes (data layer, services, caches), whatever they are named.
+    code_files = [(f, read_text(f)) for f in files if f.suffix != ".resx"]
+    own = {c for _, tx in code_files for c in re.findall(r"\b[cC]lass\s+(\w+)", tx)}
+    classes = project_classes(src) - own - {stem}
+    for cls in sorted(classes):
+        for f, tx in code_files:
+            for m in re.finditer(rf"\b{re.escape(cls)}\s*\.\s*(\w+)", tx):
+                out["leads"].setdefault("project_calls", {}).setdefault(f"{cls}.{m.group(1)}", []).append(f"{f.name}:{tx.count(chr(10), 0, m.start()) + 1}")
     # Base class: logic in a parent form belongs to this form too.
     for f in files:
         m = re.search(rf"class\s+{stem}\s*:\s*([\w\.]+)|Class\s+{stem}\s+Inherits\s+([\w\.]+)", read_text(f))

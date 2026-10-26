@@ -3,27 +3,148 @@
   "evals": [
     {
       "id": 1,
-      "prompt": "Here is the source of our old WinForms clinic app at ./legacy-src. I'm going to show you screens one by one and I want a full set of docs to rebuild it. Start.",
-      "expected_output": "Runs bootstrap: state.py init, inventory.py, writes APP-OVERVIEW.md and NAVIGATION.md skeleton, reports inventory size and invites the first screen. Does NOT deeply analyse any screen yet.",
-      "files": []
+      "name": "bootstrap-inventory-and-hidden-source",
+      "prompt": "Use the winforms-screen-to-requirements skill. The source of our old WinForms clinic app is in evals/files/mini-clinic. Bootstrap the documentation for the whole app so I can then show you screens one by one. Don't analyse any screen in depth yet.",
+      "expected_output": "Bootstrap only: STATE.json + inventory, APP-OVERVIEW and NAVIGATION skeleton, hidden-source findings (UTF-16 enum file, missing DLL, orphan form), then an invitation to name the first screen. No unit marked DONE.",
+      "files": [
+        "evals/files/mini-clinic"
+      ],
+      "expectations": [
+        "requirements-docs/STATE.json exists, is valid JSON, stores source_root as an absolute path, and its inventory contains the 7 forms (frmLogin, frmMain, frmReceipt, frmDrug, frmTaxReport, frmReceiptPrint, frmLegacyTool)",
+        "The agent ran scripts/inventory.py (or equivalent evidence) rather than guessing the screen list from file names",
+        "The menu map links 'PHIẾU THU' to frmReceipt even though the handler reaches it through the OpenReceipt() helper, and links DANH MỤC THUỐC to frmDrug and BÁO CÁO THUẾ to frmTaxReport; the 'IN PHIẾU' button inside frmReceipt is recorded as a screen-to-screen link (frmReceipt -> frmReceiptPrint), not as a main-menu item",
+        "frmLogin is identified as the startup form (Application.Run in Program.cs) and the startup flow login -> main is recorded in NAVIGATION.md",
+        "frmLegacyTool is reported as an orphan candidate (no menu, nothing opens it) and is NOT silently dropped or auto-flagged without telling the user",
+        "Model/Enums.cs is reported as UTF-16 (a file raw grep cannot read), and the enums eStatus (Draft, Paid, Cancelled) and eItemType (Drug, Service) are extracted",
+        "Missing.Core.dll is reported as referenced in the csproj but not present, as a gap to ask the user about",
+        "APP-OVERVIEW.md and NAVIGATION.md exist; no unit has status DONE and no unit spec file with requirements was written for any screen",
+        "The final message is short, gives the inventory size, and invites the user to point at the first screen"
+      ]
     },
     {
       "id": 2,
-      "prompt": "[screenshot of a form titled 'Khám thai' with fields 'Ngày kinh cuối', 'Ngày dự sinh', 'Tuổi thai' and buttons 'Lưu', 'In phiếu'] This is the screen I want you to read next.",
-      "expected_output": "Reads visible strings, runs find_screen.py, states the assumed form, traces deps with trace_deps.py, creates registered units, writes FN entries (with >=3 test vectors) for the due-date and gestational-age calculations, raises IMPs separately from legacy REQs, passes check_unit.py, updates NAVIGATION/DATA-MODEL/ROLES-MATRIX, commits and reports coverage and next screens.",
-      "files": []
+      "name": "read-receipt-screen-full-gate",
+      "setup": "Start from a project already bootstrapped on evals/files/mini-clinic (run the bootstrap steps first or reuse a saved requirements-docs).",
+      "prompt": "Use the winforms-screen-to-requirements skill and read this screen next. The window title is 'PHIẾU THU TIỀN' and it shows the labels Mã bệnh nhân, Tổng tiền, Giảm giá, Phải thu, Khách đưa, Tiền thối and buttons LƯU and IN PHIẾU.",
+      "expected_output": "Full unit spec for the receipt screen with FN entries for the three calculated fields, validation order, messages, data access, quirks, separate IMPs, passing the mechanical gate, STATE committed and INDEX regenerated.",
+      "files": [
+        "evals/files/mini-clinic"
+      ],
+      "expectations": [
+        "The agent located frmReceipt from the visible strings (find_screen.py or equivalent), stated it as the match, and did not ask the user which form it is",
+        "A unit file named exactly after the unit ID (e.g. SCR-<MODULE>-<Name>.md, ASCII) exists under modules/<MODULE>/units/ and the unit is registered in STATE.json with sources and aliases (frmReceipt, 'PHIẾU THU TIỀN')",
+        "Requirement IDs follow REQ-<MODULE>-<ShortName>-<nnn> with 3 digits and are not reused or duplicated",
+        "There are separate FN entries for total, payable and change with the exact formulas: total = sum(Qty x Price); payable = total - discount; change = tendered - payable",
+        "Each FN has at least 3 test vectors including an edge case (negative payable, empty input or a zero price), with the source of each result stated (derived from code / script / user); vectors are consistent with the formulas total = sum(Qty x Price), payable = total - discount, change = tendered - payable",
+        "The spec records that unparsable or empty discount/tendered text is treated as 0 (Parse returns 0)",
+        "Save validation order is recorded exactly: patient required, then at least one line, then stock check only for lines of type Drug",
+        "The Messages section lists all four messages: 'Vui lòng chọn bệnh nhân', 'Không có dịch vụ để thu', 'Không đủ tồn kho: <code>', 'Đã lưu phiếu thu' with their trigger conditions",
+        "Data access lists tb_Receipt (Max(Id)+1 read, INSERT) and tb_Line (UPDATE ReceiptId), and states that there is no transaction",
+        "The Coverage table lists all four handlers: btnSave_Click, btnPrint_Click, txtDiscount_EditValueChanged, txtTendered_EditValueChanged",
+        "The spec notes btnPrint is disabled until a successful save, and that the 'Xóa dòng' menu item exists in the Designer but has no handler (quirk or open question)",
+        "IMPs are raised for the Max+1 receipt number (concurrency), the non-atomic save, and missing validation of negative payable/change; they live in IMPROVEMENTS.md / the IMP section, and the legacy REQs still describe the old behavior unchanged",
+        "scripts/check_unit.py exits 0 for the unit (including all of the form's files registered as sources: .cs and .Designer.cs); STATE.json shows the unit DONE, or PARTIAL with open questions that name what is missing (a PARTIAL is correct when classes such as StockDal/Db/Receipt are not in the tree); doc_hash set, rev >= 1, and INDEX.md regenerated by state.py index (not hand-edited)",
+        "The final reply is short (units, counts of REQ/BR/FN/IMP, notable findings, next screens, coverage) and does not paste the whole spec into chat"
+      ]
     },
     {
       "id": 3,
-      "prompt": "For the Khám thai screen you already documented: in the new app the due date must use Naegele's rule from the last-period date and block future dates. Also drop the 'In phiếu' button.",
-      "expected_output": "Keeps legacy REQs untouched; creates CHANGED REQ superseding the legacy one and DROPPED status for the print requirement; logs CHANGELOG; updates STATE counters via scripts; at most one clarifying question.",
-      "files": []
+      "name": "enum-in-utf16-file",
+      "prompt": "Use the winforms-screen-to-requirements skill on evals/files/mini-clinic. What values does the eStatus enum have, where is it defined, and which statuses does a receipt actually go through in the code? Don't read any whole screen.",
+      "expected_output": "Finds eStatus via an encoding-safe search, lists Draft, Paid, Cancelled, notes the UTF-16 file, and points out from the code that only Paid is ever assigned.",
+      "files": [
+        "evals/files/mini-clinic"
+      ],
+      "expectations": [
+        "The agent found eStatus in Model/Enums.cs and lists its members Draft, Paid, Cancelled (does NOT say the enum is missing or lives in a DLL)",
+        "The agent used scripts/search_code.py, enums.py, or otherwise decoded the file as UTF-16, and mentions that the file is UTF-16 and invisible to raw grep",
+        "It states from the code that a receipt is saved with status Paid (frmReceipt.btnSave_Click) and that Draft and Cancelled are never assigned anywhere in the source",
+        "The missing cancel/draft behavior is recorded as an open question or an IMP, not invented as a requirement",
+        "The enum values are recorded in the app-level docs (GLOSSARY.md or DATA-MODEL.md status column)"
+      ]
     },
     {
       "id": 4,
-      "prompt": "I think we've read enough screens. What's left, and can you put together the final document?",
-      "expected_output": "Runs check/index, lists non-DONE units, open questions and PROPOSED IMPs, runs build_srs.py, preserves manual blocks, reports gaps honestly rather than hiding them.",
-      "files": []
+      "name": "logic-in-missing-dll",
+      "setup": "Start from a project already bootstrapped on evals/files/mini-clinic.",
+      "prompt": "Use the winforms-screen-to-requirements skill. Read the tax report screen (menu BÁO CÁO THUẾ).",
+      "expected_output": "frmTaxReport documented as PARTIAL: the tax formula in Missing.Core.dll is recorded as a gap and asked for, not invented; the SumBetween bug is found.",
+      "files": [
+        "evals/files/mini-clinic"
+      ],
+      "expectations": [
+        "frmTaxReport is identified and its unit is registered; the unit status ends as PARTIAL, not DONE",
+        "The tax computation Missing.Core.TaxCalc.Compute(revenue) is recorded with its call site (file:method:line) and flagged as living in an assembly that is referenced but not available",
+        "The agent does NOT invent a tax rate or formula; the formula appears only as an open question with what the user can provide (source or DLL)",
+        "An Open Question asks the user for Missing.Core (source or DLL) in one place, not repeated per sentence",
+        "ReceiptDal.SumBetween is found to return 0 without executing its query and to select SUM(Discount) instead of an amount; recorded as an IMP (Wrong/High) and not as a requirement",
+        "If decompiling is mentioned, it is only offered after the user supplies the DLL and with an ownership caveat; nothing is installed silently"
+      ]
+    },
+    {
+      "id": 5,
+      "name": "change-handling-new-and-dropped",
+      "setup": "Start from a project where SCR for frmReceipt is already DONE (eval 2 outputs).",
+      "prompt": "Use the winforms-screen-to-requirements skill. For the new app the receipt must reject a discount larger than the total with the message 'Giảm giá không được lớn hơn tổng tiền'. Also the new app drops the IN PHIẾU button.",
+      "expected_output": "Legacy REQs untouched; a NEW or CHANGED REQ with acceptance criteria; the print REQ marked DROPPED with reason and date; CHANGELOG and STATE updated.",
+      "files": [
+        "evals/files/mini-clinic"
+      ],
+      "expectations": [
+        "Existing LEGACY requirements are not rewritten; their text and Origin remain",
+        "A new requirement with Origin NEW or CHANGED states the discount-larger-than-total rule with the exact message and Given/When/Then acceptance criteria, placed in section 15 of the unit",
+        "The requirement for printing is set to Status DROPPED with a reason and date, not deleted",
+        "The new REQ ID comes from STATE counters (next number for that unit), is ASCII-formatted, and no existing ID is reused",
+        "CHANGELOG.md has dated entries for the new/changed and dropped requirements; STATE.json log and counters were updated via state.py",
+        "The agent asked at most one clarifying question (or none) and did not stall",
+        "If an IMP about missing amount validation exists, the new REQ links to it and the IMP is updated or referenced",
+        "INDEX.md was regenerated by state.py index"
+      ]
+    },
+    {
+      "id": 6,
+      "name": "coverage-and-orphans",
+      "setup": "Start from a project bootstrapped on evals/files/mini-clinic with frmReceipt DONE.",
+      "prompt": "Use the winforms-screen-to-requirements skill. Which screens are still unread, is any of the code dead, and what should I show you next?",
+      "expected_output": "Coverage numbers, orphan proposal with confidence and caveat, and next-screen suggestions in dependency order.",
+      "files": [
+        "evals/files/mini-clinic"
+      ],
+      "expectations": [
+        "The agent ran state.py flag --auto-orphans (or equivalent evidence) and proposes frmLegacyTool as a high-confidence orphan with the reason (no menu, no other file mentions it)",
+        "It does not apply the flag silently on uncertain items and tells the user that menus built from a database table or reflection could hide real usage",
+        "After flagging, the coverage denominator excludes the orphan and INDEX.md lists it under the orphan/skipped section",
+        "Coverage is reported as a number out of in-scope items (not counting the orphan) and matches INDEX.md",
+        "Next-screen suggestions follow the preferred order: PENDING dependencies of the read screen first (frmReceiptPrint), then screens sharing the same data, then the rest; at most 3 are suggested"
+      ]
+    },
+    {
+      "id": 7,
+      "name": "source-drift-after-edit",
+      "setup": "Start from a project with frmReceipt DONE. Then modify evals/files/mini-clinic/Forms/frmReceipt.cs (for example change Recalc so payable = total - discount - 1000) before running the prompt.",
+      "prompt": "Use the winforms-screen-to-requirements skill. I updated the source since last time. What is affected and is the documentation still right?",
+      "expected_output": "Drift detected by hash, unit marked STALE, only the changed part re-read, discrepancy logged, dependents listed.",
+      "files": [
+        "evals/files/mini-clinic"
+      ],
+      "expectations": [
+        "The agent ran state.py check and reported source drift on the frmReceipt unit by file name",
+        "The unit status becomes STALE (not silently left DONE) and dependents (units whose deps include it) are listed for the user rather than mass-marked",
+        "Only the changed behavior (the payable formula) is re-read and the affected FN/REQ is updated or set NEEDS-REVIEW with old vs new evidence, not rewritten from scratch",
+        "CHANGELOG.md has a SOURCE-DRIFT (or DISCREPANCY) entry with date; after re-analysis the unit is committed with new hashes and rev incremented",
+        "The agent does not touch text between manual:start and manual:end markers"
+      ]
+    },
+    {
+      "id": 8,
+      "name": "should-not-trigger",
+      "prompt": "Write me a small C# WinForms login form with username/password fields and a Login button that validates against a hard-coded user.",
+      "expected_output": "Plain coding help; the skill is not used and no requirements-docs are created.",
+      "files": [],
+      "expectations": [
+        "The response writes the WinForms login code",
+        "No requirements-docs directory or STATE.json is created and the agent does not start a bootstrap or screen-reading workflow"
+      ]
     }
   ]
 }

@@ -21,7 +21,7 @@ def cmd_init(a):
     if (root / "STATE.json").exists():
         sys.exit("STATE.json already exists; refusing to overwrite. Use `check` instead.")
     state = {
-        "schema": 2, "root": str(root), "source_root": a.source, "hash_method": "sha1-lf",
+        "schema": 2, "root": str(root), "source_root": str(Path(a.source).resolve()), "hash_method": "sha1-lf",
         "doc_language": a.lang, "counters": {}, "inventory": {}, "units": {}, "queue": [], "log": [],
     }
     # Adopt pre-existing docs: counters = highest number seen per ID prefix.
@@ -49,6 +49,8 @@ def cmd_check(a):
         elif u.get("doc_hash") and file_hash(doc) != u["doc_hash"]:
             problems["doc_edited_outside_skill"].append(uid)
         for rel, h in u.get("sources", {}).items():
+            if not h:  # registered but not yet committed: nothing to compare against
+                continue
             p = src / rel
             if not p.exists() or file_hash(p) != h:
                 problems["source_drift"].append((uid, rel, "deleted" if not p.exists() else "changed"))
@@ -92,6 +94,14 @@ def cmd_register(a):
         if inv is None:
             sys.exit(f"inventory item {a.inventory} not found")
         inv["unit"] = uid
+        # Register every file that makes up the form (code-behind, Designer, resx) so source drift
+        # is detected for all of them, not just the .cs the author happened to read.
+        src = Path(st.get("source_root") or ".")
+        for rel in inv.get("files", []):
+            u["sources"].setdefault(rel, "")
+            resx = (src / rel).with_suffix(".resx")
+            if resx.exists() and (src / rel).suffix == ".cs" and ".Designer" not in rel:
+                u["sources"].setdefault(str(resx.relative_to(src)), "")
     for d in a.dep or []:
         if d not in st["units"]:
             st["units"][d] = {"status": "PENDING", "rev": 0, "sources": {}, "aliases": [], "deps": []}
@@ -127,6 +137,58 @@ def cmd_commit(a):
     st["log"].append({"date": today(), "action": a.action, "units": [a.unit], "note": a.note or ""})
     save_state(a.root, st)
     print(f"{a.unit}: {a.status} rev {u['rev']}")
+
+
+def cmd_flag(a):
+    """Mark an inventory item as orphan (no menu/caller; dead code) or skipped (out of scope), or clear it.
+
+    Orphans are excluded from the coverage denominator but stay listed in INDEX.md so nothing is hidden.
+    Use `flag --auto-orphans` to propose orphans from the inventory: items that no menu opens, that no other
+    form instantiates, and that are not the startup form. Proposals are printed, then applied only with --apply.
+    """
+    st = load_state(a.root)
+    inv = st["inventory"]
+    if a.auto_orphans:
+        opened = {o for m in st.get("menus", []) for o in m["opens"]}
+        callers = st.get("callers", {})
+        entry = set(st.get("entry_points", []))
+        rows = []
+        for k, i in inv.items():
+            if i["type"] not in ("SCR", "CMP") or i.get("orphan") or i.get("skipped"):
+                continue
+            c, refs = i["class"], callers.get(i["class"], [])
+            if c in opened or c in entry:
+                continue
+            if not refs:
+                rows.append((k, "high", "no menu, no other file mentions it"))
+            elif all(r["kinds"] == ["string"] for r in refs):
+                rows.append((k, "low", "only mentioned in strings (reflection/config?): " + ", ".join(r["file"] for r in refs[:3])))
+            elif all(r["file"] in {x["class"] for x in inv.values() if x.get("orphan")} for r in refs):
+                rows.append((k, "medium", "only used by other orphans"))
+        for k, conf, why in sorted(rows, key=lambda r: ["high", "medium", "low"].index(r[1])):
+            print(f"{'orphan ' if a.apply and conf == 'high' else 'orphan?'} [{conf:6}] {k} - {why}")
+            if a.apply and conf == "high":
+                inv[k]["orphan"] = True
+                inv[k]["orphan_note"] = why
+        if a.apply:
+            save_state(a.root, st)
+            print("applied: high-confidence only. Medium/low need a human look; flag them individually.")
+        else:
+            print(f"{len(rows)} candidate(s). Review (menus can be built from a DB table or reflection), then --apply (high only) or flag individually.")
+        return
+    for key in a.items:
+        if key not in inv:
+            sys.exit(f"inventory item {key} not found (format TYPE:Class, e.g. SCR:frmOld)")
+        if a.clear:
+            inv[key].pop("orphan", None); inv[key].pop("skipped", None)
+        elif a.reason_skip:
+            inv[key]["skipped"] = a.reason_skip
+        else:
+            inv[key]["orphan"] = True
+            if a.note:
+                inv[key]["orphan_note"] = a.note
+    save_state(a.root, st)
+    print(f"updated {len(a.items)} item(s)")
 
 
 def cmd_log(a):
@@ -168,10 +230,13 @@ def cmd_index(a):
         d = root / u["doc"]
         rows.append(f"| {uid} | {typ} | {mod} | {u['status']} | {count_in_doc(d, 'REQ')} | {count_in_doc(d, 'BR')} | "
                     f"{count_in_doc(d, 'FN')} | {count_in_doc(d, 'IMP')} | {oq.get(uid, 0)} | {u.get('analyzed_at', '')} |")
-    inv = st.get("inventory", {})
+    inv_all = st.get("inventory", {})
+    inv = {k: i for k, i in inv_all.items() if not i.get("orphan") and not i.get("skipped")}
+    out_of_scope = {k: i for k, i in inv_all.items() if i.get("orphan") or i.get("skipped")}
     done = sum(1 for i in inv.values() if i.get("unit") and st["units"].get(i["unit"], {}).get("status") == "DONE")
     lines = ["# INDEX", "", "(Generated from STATE.json and the unit docs. Do not edit by hand.)", "",
-             f"**Coverage**: {done}/{len(inv)} inventory items DONE" + (f" ({100 * done // len(inv)}%)" if inv else ""), "",
+             f"**Coverage**: {done}/{len(inv)} in-scope inventory items DONE" + (f" ({100 * done // len(inv)}%)" if inv else "")
+             + (f"; {len(out_of_scope)} orphan/skipped excluded (listed below)" if out_of_scope else ""), "",
              "## Modules", "| Module | Units | DONE | PARTIAL | PENDING |", "|---|---|---|---|---|"]
     for m, sts in sorted(mods.items()):
         lines.append(f"| {m} | {len(sts)} | {sts.count('DONE')} | {sts.count('PARTIAL')} | {sts.count('PENDING')} |")
@@ -180,6 +245,10 @@ def cmd_index(a):
     for uid, u in sorted(st["units"].items()):
         if u.get("deps"):
             lines.append(f"- {uid} -> {', '.join(u['deps'])}")
+    if out_of_scope:
+        lines += ["", "## Orphan / skipped items (excluded from coverage)"]
+        lines += [f"- {k}: {'skipped - ' + i['skipped'] if i.get('skipped') else 'orphan'}" + (f" ({i['orphan_note']})" if i.get("orphan_note") else "")
+                  for k, i in sorted(out_of_scope.items())]
     lines += ["", "## Queue (discovered, not yet read)"] + [f"- {q}" for q in st.get("queue", [])]
     (root / "INDEX.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     print(f"wrote {root / 'INDEX.md'}")
@@ -199,6 +268,9 @@ def main():
     p = sp.add_parser("set"); p.add_argument("unit"); p.add_argument("status", choices=STATUSES); p.add_argument("--checkpoint"); p.set_defaults(f=cmd_set)
     p = sp.add_parser("commit"); p.add_argument("unit"); p.add_argument("--status", choices=["DONE", "PARTIAL"], default="DONE")
     p.add_argument("--action", default="analyze"); p.add_argument("--note"); p.set_defaults(f=cmd_commit)
+    p = sp.add_parser("flag"); p.add_argument("items", nargs="*"); p.add_argument("--clear", action="store_true")
+    p.add_argument("--note"); p.add_argument("--skip", dest="reason_skip", help="mark out of scope with a reason")
+    p.add_argument("--auto-orphans", action="store_true"); p.add_argument("--apply", action="store_true"); p.set_defaults(f=cmd_flag)
     p = sp.add_parser("log"); p.add_argument("--action", required=True); p.add_argument("--units", nargs="*"); p.add_argument("--note"); p.set_defaults(f=cmd_log)
     p = sp.add_parser("index"); p.set_defaults(f=cmd_index)
 

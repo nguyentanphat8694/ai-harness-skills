@@ -22,6 +22,20 @@ def demote(text, by=2):
     return re.sub(r"^(#+)", lambda m: "#" * min(6, len(m.group(1)) + by), text, flags=re.M)
 
 
+def req_summary(doc):
+    """One table row per REQ in a unit doc: ID+title, statement, status, assessment."""
+    if not doc.exists():
+        return []
+    rows = []
+    for blk in re.split(r"^#{3,4}\s+(?=REQ-)", doc.read_text(encoding="utf-8"), flags=re.M)[1:]:
+        head = blk.splitlines()[0]
+        def field(name):
+            m = re.search(rf"\*\*{name}\*\*:\s*(.+)", blk)
+            return m.group(1).strip().replace("|", "/") if m else ""
+        rows.append(f"| {head} | {field('Statement')} | {field('Status')} | {field('Assessment')} |")
+    return rows
+
+
 def main():
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--root", default="requirements-docs")
@@ -56,6 +70,10 @@ def main():
             if u["status"] != "DONE":
                 gaps.append(f"{uid} is {u['status']}")
         lines.append("")
+        for uid, u in units:
+            reqs = req_summary(root / u["doc"])
+            if reqs:
+                lines += [f"#### {uid}", "", "| Requirement | Statement | Status | Assessment |", "|---|---|---|---|"] + reqs + [""]
     for k, i in st.get("inventory", {}).items():
         if not i.get("unit") and not i.get("orphan"):
             gaps.append(f"inventory item {k} has no unit")

@@ -23,11 +23,16 @@ Tài liệu viết bằng tiếng Việt. Chưa đọc sâu màn hình nào, tô
 (Bỏ câu "tiếng Việt" nếu bạn muốn tài liệu tiếng Anh, là mặc định.)
 
 Agent sẽ:
-- Chạy `state.py init` và `inventory.py`, rồi liệt kê số form, user control, báo cáo, SP, timer và menu → form.
+- Chạy `state.py init` và `inventory.py`, rồi liệt kê số form, user control, báo cáo, SP, timer, menu → form và form khởi động (`Application.Run`).
+- Kiểm tra **nguồn bị ẩn** (xem mục 5): file mã hóa UTF-16 / code page cũ, toàn bộ enum, assembly tham chiếu nhưng thiếu file.
+- Đề xuất các form **orphan** (không menu nào mở, không file nào nhắc tới) để bạn xác nhận.
 - Tạo `APP-OVERVIEW.md` (công nghệ, cấu trúc solution, đề xuất chia module) và khung `NAVIGATION.md`.
 - Báo kết quả và mời bạn chỉ màn hình đầu tiên.
 
-**Việc bạn nên làm sau bước này:** đọc nhanh danh sách agent báo và sửa nếu cần: "form X là code chết, bỏ qua", "module này gọi là Y". Các handler không gắn vào menu được báo riêng là `unwired_handlers`, nên hãy cho agent biết nên bỏ qua hay đọc.
+**Việc bạn nên làm sau bước này:**
+- Đọc danh sách và sửa nếu cần: "module này gọi là Y", "form X là code chết, bỏ qua".
+- Với từng đề xuất orphan, trả lời đúng/sai. Menu dựng từ bảng DB hoặc reflection có thể khiến một form đang dùng bị nhầm là orphan.
+- Nếu agent báo thiếu DLL hoặc source của thư viện tự viết, gửi một lần cho đủ (xem mục 5).
 
 ## 2. Đưa từng màn hình cho agent (vòng lặp chính)
 
@@ -70,6 +75,9 @@ Mở phiên mới và nhắc skill. Agent tự đọc `requirements-docs/STATE.j
 | Duyệt gợi ý cải tiến | `Chấp nhận IMP-TT-001 và IMP-TT-005. Từ chối IMP-TT-004 vì app chỉ có một thu ngân.` |
 | Trả lời câu hỏi mở | `Q-004: Gioitinh = 0 là Nam.` |
 | Source đã đổi | `Source đã được cập nhật, kiểm tra màn hình nào bị ảnh hưởng.` (agent chạy `check`, đánh dấu STALE và đọc lại phần đổi) |
+| Hỏi về enum / hằng số | `Enum etrangthai có những giá trị nào, nằm ở đâu?` (agent dùng `search_code.py` / `enums.py`, không dùng grep thô) |
+| Chốt form chết | `Đánh dấu orphan cho frmOld và frmTool, bỏ frmDemo ra khỏi phạm vi.` |
+| Gửi thư viện còn thiếu | `Đây là Missing.Core.dll, của chúng tôi. Đọc logic tính thuế trong đó.` |
 | Rà từng nhóm | `Liệt kê tất cả IMP mức Cao đang PROPOSED.` / `Liệt kê câu hỏi mở theo màn hình.` |
 | Tổng hợp cuối | `Tôi đã đọc đủ. Còn thiếu gì? Dựng SRS.md cuối cùng.` |
 
@@ -98,17 +106,53 @@ Quy tắc cần nhớ:
 - Muốn tự ghi chú trong tài liệu mà không bị agent ghi đè, đặt giữa `<!-- manual:start -->` và `<!-- manual:end -->`.
 - Đừng sửa `STATE.json` và `INDEX.md` bằng tay.
 
-## 5. Lưu ý và hạn chế
+## 5. Nguồn bị ẩn: mã hóa, enum, DLL, orphan
+
+Đây là những chỗ dễ làm tài liệu thiếu mà không ai biết. Skill có sẵn công cụ cho từng chỗ.
+
+| Vấn đề | Công cụ | Ghi chú |
+|---|---|---|
+| Tìm code bị `grep` bỏ sót vì file là UTF-16 hoặc code page cũ | `scripts/search_code.py` | `--fold` bỏ qua hoa thường và dấu, `-C N` xem các dòng sau, `--list-encodings` liệt kê file `grep` thô không đọc được. **Kết quả rỗng của `grep` không phải bằng chứng là không có.** |
+| Enum, trạng thái, danh sách quyền, tên bảng | `scripts/enums.py --md` | Kết quả được đưa vào `GLOSSARY.md`, `DATA-MODEL.md`, `ROLES-MATRIX.md` |
+| Thư viện tham chiếu nhưng thiếu file, DLL tự viết | `scripts/assemblies.py` | Phân loại: bên thứ ba / dự án trong solution / có thể là code của nhóm. File thiếu được hỏi bạn một lần cho tất cả |
+| Logic nằm trong DLL của nhóm | `references/decompile.md` | Agent ưu tiên xin source. Chỉ decompile DLL của chính chủ app, kết quả đặt ngoài cây source và ghi độ tin cậy là "suy luận" |
+| Form chết | `state.py flag` | `--auto-orphans` đề xuất theo mức tin cậy (cao/trung bình/thấp), `--apply` chỉ áp dụng mức cao, `flag TYPE:Class --note "lý do"` đánh dấu từng mục, `--skip "lý do"` loại khỏi phạm vi, `--clear` hoàn tác |
+
+Orphan và mục bị loại khỏi phạm vi **không** tính vào mẫu số độ phủ, nhưng vẫn liệt kê trong `INDEX.md` nên không bị che giấu. Sau vài màn hình nên chạy lại `--auto-orphans`, vì một tham chiếu mới có thể đưa form ra khỏi trạng thái orphan.
+
+Nếu thiếu thư viện hoặc logic nằm trong binary không lấy được, agent **không đoán**: nó ghi câu hỏi mở, đánh dấu unit `PARTIAL` và chỉ rõ vị trí gọi (`file:hàm:dòng`).
+
+## 6. Lưu ý và hạn chế
 
 - Các script quét bằng regex, nên là **gợi ý ban đầu**, không đảm bảo đủ. Có thể bỏ sót form mở bằng reflection, menu lưu trong DB, hoặc cách gắn sự kiện lạ. Agent vẫn phải đọc code, và bạn nên đối chiếu độ phủ với những gì bạn biết về app.
-- Với DLL đóng, enum nằm trong DLL, hay SP không có script, agent sẽ ghi vào câu hỏi mở và đánh dấu unit `PARTIAL` chứ không đoán.
+- Regex thiên về C#. VB.NET mới được hỗ trợ ở mức cơ bản (ví dụ trích enum), chưa kiểm thử với source VB thật.
+- Việc decompile chưa được thử trên DLL thật. Nếu máy chưa có `ilspycmd`, agent sẽ nhờ bạn cài, không tự cài.
 - Trình bày về y khoa, tài chính, pháp lý luôn là **gợi ý cần chuyên gia xác nhận**.
 - Màn hình lớn có thể cần nhiều lượt. Nếu phiên bị ngắt, unit giữ trạng thái `IN_PROGRESS` và phiên sau tự tiếp tục từ điểm dừng.
-- Skill này chưa được đánh giá bằng bộ eval. Hiện mới được chạy thử trên một màn hình (`frmPhieuThu`), nên hãy kiểm tra kỹ vài màn hình đầu, nhất là các công thức tính toán và quy tắc thông báo lỗi.
+- Bộ eval (mục 7) đã có tiêu chí nhưng **chưa được chạy bằng agent**; phần cơ học đã được thử bằng script trên app mẫu và trên một màn hình thật (`frmPhieuThu`). Hãy kiểm tra kỹ vài màn hình đầu, nhất là các công thức tính toán và quy tắc thông báo lỗi.
 
-## 6. Quy trình gợi ý cho cả dự án
+## 7. Kiểm thử skill (evals)
 
-1. Bootstrap, rồi duyệt danh mục và module.
+`evals/evals.json` có 8 kịch bản và 54 tiêu chí kiểm chứng được, chạy trên một app mẫu nhỏ có sẵn trong `evals/files/mini-clinic/` (7 form). App mẫu cố ý gài các "bẫy" thật: enum nằm trong file UTF-16, một DLL được tham chiếu nhưng thiếu, một form chết, menu mở form qua hàm trung gian, và một hàm trả về 0 mà không chạy truy vấn.
+
+| # | Kịch bản | Kiểm tra gì |
+|---|---|---|
+| 1 | Bootstrap | inventory, form khởi động, menu qua hàm trung gian, UTF-16, DLL thiếu, orphan, chưa đọc sâu màn hình nào |
+| 2 | Đọc màn hình phiếu thu | nhận diện từ chuỗi trên ảnh, FN có test vector, thứ tự validate, thông báo, IMP tách riêng, cổng kiểm tra |
+| 3 | Enum trong file UTF-16 | tìm đúng enum, không kết luận "nằm trong DLL", ghi các trạng thái không bao giờ được gán |
+| 4 | Logic nằm trong DLL thiếu | unit `PARTIAL`, không bịa công thức thuế, tìm ra hàm trả về 0 sai |
+| 5 | Thêm yêu cầu mới / bỏ chức năng | giữ nguyên LEGACY, REQ mới có tiêu chí chấp nhận, `DROPPED`, CHANGELOG |
+| 6 | Độ phủ và orphan | đề xuất orphan kèm lưu ý, mẫu số độ phủ, gợi ý màn hình tiếp theo |
+| 7 | Source thay đổi | phát hiện drift qua hash, `STALE`, chỉ đọc lại phần đổi |
+| 8 | Không nên kích hoạt | yêu cầu viết code login bình thường, skill không được dùng |
+
+Cách chạy: dùng skill-creator (`.agents/skills/skill-creator`), chạy từng eval với và không có skill, chấm các tiêu chí rồi xem kết quả bằng `eval-viewer`. Các eval 2, 4, 5, 6, 7 cần dựng trạng thái từ bước trước (ghi ở trường `setup`). Có thể chạy `scripts/*.py` trực tiếp trên `evals/files/mini-clinic` để tự kiểm tra phần cơ học trước.
+
+Các tiêu chí đo hành vi quan sát được trong tài liệu và `STATE.json`. Hai việc cần bạn tự đánh giá thủ công: tài liệu có thật sự đủ để viết lại app không, và các gợi ý IMP có hợp lý về nghiệp vụ không.
+
+## 8. Quy trình gợi ý cho cả dự án
+
+1. Bootstrap, rồi duyệt danh mục, module, orphan, danh sách enum và thư viện thiếu.
 2. Đọc các **màn hình danh mục** nhỏ trước (ví dụ nhóm `Frm_DM*`) để nắm dữ liệu dùng chung và thuật ngữ.
 3. Đọc luồng chính theo thứ tự nghiệp vụ: đăng ký → khám → chỉ định (xét nghiệm, siêu âm) → thu tiền → kho.
 4. Sau mỗi 5-10 màn hình: duyệt IMP, trả lời câu hỏi mở, kiểm tra `NAVIGATION.md` và `DATA-MODEL.md`.

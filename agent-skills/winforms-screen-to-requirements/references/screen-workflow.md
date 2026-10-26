@@ -40,6 +40,8 @@ grep -rn "new FrmX\|FrmX\.Show\|FrmX()" --include=*.cs --include=*.vb .   # who 
 ## Step 2 - Trace dependencies to the leaves
 Start with `python3 scripts/trace_deps.py --source <src> <FormClass>` for a mechanical list of leads (handlers, forms opened, BLL calls, SQL/SP, messages, shortcuts, timers, global state, permissions, computed fields, who opens this form). Then read each lead. Follow every direction until a leaf (DB, file, device, external API). The full checklist is in [tracing-checklist.md](tracing-checklist.md).
 
+If a symbol cannot be found (enum, class, constant): use `search_code.py`, then [decompile.md](decompile.md). Never write "lives in a DLL" before an encoding-safe search and `assemblies.py` agree.
+
 Each thing found becomes a unit or attaches to an existing one; record caller/callee relations for `MODULE.md`.
 
 Large code-behind files (thousands of lines): read by `#region`/segment and **write into the unit file after each segment**, updating `checkpoint` in STATE each time.
@@ -48,7 +50,7 @@ Large code-behind files (thousands of lines): read by `#region`/segment and **wr
 - Assign each unit to a business module; create the module (and list it in INDEX) if new.
 - A screen that touches several concerns (e.g. a sales form with stock, receivables, printing) is **split**: the form keeps UI orchestration; business logic lives in the matching `SVC` unit.
 - Names use business terms; the old class name goes in the Source section and `aliases`.
-- Register: `python3 scripts/state.py register <UNIT-ID> --source <relpath> --alias <name> --dep <UNIT-ID> --inventory <key>`. This refuses a second unit for the same alias.
+- Register: `python3 scripts/state.py register <UNIT-ID> --alias <name> --dep <UNIT-ID> --inventory <key>`. With `--inventory` it records **every file of the form** (code-behind, `.Designer.cs`, `.resx`) as a source, so a later change to the layout is detected as drift. Add other files the unit depends on (BLL/DAL, SP scripts) with repeated `--source <relpath>`. It refuses a second unit for the same alias. `check_unit.py` fails if a form's Designer/resx exists on disk but is not registered.
 
 ## Step 4 - Write the unit spec
 Create/update `modules/<MODULE>/units/<UNIT-ID>.md` from `assets/templates/unit.md`. Write after each completed part; set status via `state.py set <UNIT> IN_PROGRESS --checkpoint "<what is done>"`. Requirement format: `assets/templates/requirement.md`. Write from the business perspective ("the system must ... because ...") without dropping behavior: control names, tab order and display formats that affect users go in the UI inventory and Coverage table. Do not invent schema or pick frameworks for the new app unless asked. Do not guess: unclear intent -> `Confidence: Ask` + Open Question.

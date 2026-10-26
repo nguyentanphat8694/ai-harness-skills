@@ -1,0 +1,232 @@
+{
+  "schema": 2,
+  "root": "requirements-docs",
+  "source_root": "/Users/phatnguyen/Downloads/ai-harness-skills/agent-skills/winforms-screen-to-requirements/evals/files/mini-clinic",
+  "hash_method": "sha1-lf",
+  "doc_language": "en",
+  "counters": {
+    "REQ-REC-Receipt": 8,
+    "BR-REC": 8,
+    "FN-REC": 3,
+    "IMP-REC": 6,
+    "Q": 6
+  },
+  "inventory": {
+    "SCR:frmDrug": {
+      "type": "SCR",
+      "class": "frmDrug",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Forms/frmDrug.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmReceipt": {
+      "type": "SCR",
+      "class": "frmReceipt",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Forms/frmReceipt.cs",
+        "Forms/frmReceipt.Designer.cs"
+      ],
+      "caption": "PHIẾU THU TIỀN",
+      "unit": "SCR-REC-Receipt"
+    },
+    "SCR:frmTaxReport": {
+      "type": "SCR",
+      "class": "frmTaxReport",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Forms/frmTaxReport.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmReceiptPrint": {
+      "type": "SCR",
+      "class": "frmReceiptPrint",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Forms/frmReceiptPrint.cs"
+      ],
+      "caption": "",
+      "unit": "SCR-REC-ReceiptPrint"
+    },
+    "SCR:frmLegacyTool": {
+      "type": "SCR",
+      "class": "frmLegacyTool",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Forms/frmLegacyTool.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmLogin": {
+      "type": "SCR",
+      "class": "frmLogin",
+      "base": "Form",
+      "files": [
+        "App/frmLogin.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmMain": {
+      "type": "SCR",
+      "class": "frmMain",
+      "base": "DevExpress.XtraBars.Ribbon.RibbonForm",
+      "files": [
+        "App/frmMain.cs",
+        "App/frmMain.Designer.cs"
+      ],
+      "caption": "PHẦN MỀM PHÒNG KHÁM MẪU",
+      "unit": null
+    }
+  },
+  "units": {
+    "SCR-REC-Receipt": {
+      "status": "PARTIAL",
+      "rev": 1,
+      "sources": {
+        "Forms/frmReceipt.cs": "4f03a64d27a6b824003b9f05a421acae30c76d00"
+      },
+      "aliases": [
+        "PHIẾU THU TIỀN",
+        "frmReceipt"
+      ],
+      "deps": [
+        "SCR-REC-ReceiptPrint"
+      ],
+      "doc": "modules/REC/units/SCR-REC-Receipt.md",
+      "doc_hash": "5b804527c1f623b6255d2fec48775d03e17dd127",
+      "analyzed_at": "2026-10-26"
+    },
+    "SCR-REC-ReceiptPrint": {
+      "status": "PENDING",
+      "rev": 0,
+      "sources": {
+        "Forms/frmReceiptPrint.cs": ""
+      },
+      "aliases": [
+        "frmReceiptPrint"
+      ],
+      "deps": [],
+      "doc": "modules/REC/units/SCR-REC-ReceiptPrint.md"
+    }
+  },
+  "queue": [],
+  "log": [
+    {
+      "date": "2026-10-26",
+      "action": "analyze",
+      "units": [
+        "SCR-REC-Receipt"
+      ],
+      "note": "first read; missing Missing.Core.dll, 5 open questions"
+    }
+  ],
+  "menus": [
+    {
+      "caption": "IN PHIẾU",
+      "control": "btnPrint",
+      "handler": "btnPrint_Click",
+      "opens": [
+        "frmReceiptPrint"
+      ],
+      "in_form": "frmReceipt"
+    },
+    {
+      "caption": "PHIẾU THU",
+      "control": "btnReceipt",
+      "handler": "btnReceipt_ItemClick",
+      "opens": [
+        "frmReceipt"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC THUỐC",
+      "control": "btnDrug",
+      "handler": "btnDrug_ItemClick",
+      "opens": [
+        "frmDrug"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "BÁO CÁO THUẾ",
+      "control": "btnTax",
+      "handler": "btnTax_ItemClick",
+      "opens": [
+        "frmTaxReport"
+      ],
+      "in_form": "frmMain"
+    }
+  ],
+  "unwired_handlers": [
+    {
+      "in_form": "frmLogin",
+      "handler": "btnLogin_Click",
+      "opens": [
+        "frmMain"
+      ]
+    }
+  ],
+  "callers": {
+    "frmDrug": [
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new"
+        ]
+      }
+    ],
+    "frmLogin": [
+      {
+        "file": "Program",
+        "kinds": [
+          "new"
+        ]
+      }
+    ],
+    "frmMain": [
+      {
+        "file": "frmLogin",
+        "kinds": [
+          "new"
+        ]
+      }
+    ],
+    "frmReceiptPrint": [
+      {
+        "file": "frmReceipt",
+        "kinds": [
+          "new"
+        ]
+      }
+    ],
+    "frmLegacyTool": [],
+    "frmReceipt": [
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new",
+          "type"
+        ]
+      }
+    ],
+    "frmTaxReport": [
+      {
+        "file": "frmMain",
+        "kinds": [
+          "new"
+        ]
+      }
+    ]
+  },
+  "entry_points": [
+    "frmLogin"
+  ]
+}

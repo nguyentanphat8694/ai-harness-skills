@@ -1,6 +1,6 @@
 ---
 name: winforms-screen-to-requirements
-description: Reverse-engineer a legacy WinForms app (C#/VB.NET) into a complete requirements document set, one screen at a time. The user hands over the source and then shows screens (screenshot, caption, menu or button name); the agent locates the form in the source, traces everything it touches (base forms, UserControls, BLL/DAL, SQL and stored procedures, reports, config, permissions, devices), and writes traceable requirements, business rules, calculated-field formulas with test vectors, and an assessment of flaws in the old app. Findings accumulate into one doc set with app-level documents (overview, navigation, data model, role matrix, workflows) and a final SRS, so a new team can rebuild the app without opening the old source. Use whenever the user mentions reading, analysing or documenting a screen/form of an old WinForms app, shares a screenshot of a legacy desktop app, asks to "extract requirements", "document the legacy app", "reverse-engineer this form", "what does this screen do", wants to rewrite or migrate a WinForms/.NET Framework app, or adds/changes/drops requirements for the new app while studying the old one, even if they never say "requirements". Also use for "what is left to read", coverage, or building the final SRS from the analysed screens.
+description: Reverse-engineer a legacy WinForms app (C#/VB.NET) into a complete requirements document set, one screen at a time. The user hands over the source and then shows screens (screenshot, caption, menu or button name); the agent locates the form in the source, traces everything it touches (base forms, UserControls, BLL/DAL, SQL and stored procedures, reports, config, permissions, devices), and writes traceable requirements, business rules, calculated-field formulas with test vectors, and an assessment of flaws in the old app. Findings accumulate into one doc set with app-level documents (overview, navigation, data model, role matrix, workflows) and a final SRS, so a new team can rebuild the app without opening the old source. Use whenever the user mentions reading, analysing or documenting a screen/form of an old WinForms app, shares a screenshot of a legacy desktop app, asks to "extract requirements", "document the legacy app", "reverse-engineer this form", "what does this screen do", wants to rewrite or migrate a WinForms/.NET Framework app, or adds/changes/drops requirements for the new app while studying the old one, even if they never say "requirements". Also use for "what is left to read", coverage, or building the final SRS from the analysed screens. Vietnamese triggers: "đọc màn hình/form X", "phân tích giao diện này", "viết requirement từ source cũ", "màn hình này làm gì", "còn màn hình nào chưa đọc", "chốt requirement để viết lại app".
 ---
 
 # WinForms Screen -> Requirements
@@ -34,7 +34,7 @@ Output goes to `requirements-docs/` (layout in [references/concepts-and-layout.m
 | Asks "what's left", coverage, or says reading is done | Coverage report / Phase C | [references/app-level.md](references/app-level.md) |
 | Moves to scanning the whole project in one pass or planning the rewrite | Use together with the `legacy-app-ba-extractor` skill if available, sharing `requirements-docs/` | |
 
-Scripts and templates are run/copied, not memorised: every script has `--help`.
+Scripts and templates are run/copied, not memorised: every script has `--help`. All `scripts/...`, `references/...` and `assets/...` paths in this skill are relative to **this skill's directory**; resolve them to absolute paths before running (e.g. `python3 <skill-dir>/scripts/state.py --root requirements-docs check`). Do not run them with `python3 -I` (it hides the sibling `_common.py`). `--root` and `--source` are relative to the current working directory; STATE stores `source_root` as an absolute path so later sessions can run from anywhere.
 
 ## Phase B in brief (full steps in screen-workflow.md)
 
@@ -48,6 +48,7 @@ Scripts and templates are run/copied, not memorised: every script has `--help`.
 
 ## Rules that matter most (and why)
 
+- **Search with `scripts/search_code.py`, not raw `grep`.** Legacy trees often contain UTF-16 or legacy-code-page files that raw grep silently skips; "not found" from grep is not evidence. Before claiming something is missing or lives in a DLL, follow [references/decompile.md](references/decompile.md).
 - **Never modify the legacy source.** You only read it and write docs.
 - **Every legacy requirement cites `file:method:line`.** Without a source it is not a legacy requirement; this is what keeps the docs honest and lets later sessions detect drift.
 - **Legacy statements stay as found; suggestions live only in IMP.** The user decides what the new app does; silently "fixing" the old behavior would hide it from them.
@@ -59,6 +60,6 @@ Scripts and templates are run/copied, not memorised: every script has `--help`.
 
 ## Resources
 
-- `scripts/` (Python 3 stdlib only): `state.py` (init, check, next-id, register, set, commit, log, index), `inventory.py`, `find_screen.py`, `trace_deps.py`, `check_unit.py`, `build_srs.py`.
-- `references/`: concepts-and-layout, screen-workflow, tracing-checklist, functions-fn, improvements-imp, change-handling, state-protocol, app-level.
+- `scripts/` (Python 3 stdlib only): `state.py` (init, check, next-id, register, set, flag, commit, log, index), `inventory.py`, `find_screen.py`, `trace_deps.py`, `check_unit.py`, `build_srs.py`, `search_code.py` (encoding-safe search), `enums.py`, `assemblies.py`.
+- `references/`: concepts-and-layout, screen-workflow, tracing-checklist, functions-fn, improvements-imp, change-handling, state-protocol, app-level, decompile (encodings, enums, binaries).
 - `assets/templates/`: unit, requirement, fn, imp, module, ledgers and the app-level document skeletons.

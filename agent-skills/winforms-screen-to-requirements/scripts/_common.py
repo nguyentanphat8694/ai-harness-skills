@@ -12,8 +12,24 @@ SOURCE_EXTS = {".cs", ".vb", ".resx", ".xaml", ".config", ".settings", ".sql", "
 SKIP_DIRS = {"bin", "obj", ".git", ".vs", "packages", "node_modules", "TestResults"}
 
 
+def detect_encoding(path):
+    """Best-effort encoding label: utf-16, utf-8-bom, utf-8, ascii, or cp1258/cp1252 (legacy code page)."""
+    raw = Path(path).read_bytes()
+    if raw.startswith((b"\xff\xfe", b"\xfe\xff")):
+        return "utf-16"
+    if raw.startswith(b"\xef\xbb\xbf"):
+        return "utf-8-bom"
+    if all(b < 128 for b in raw[:200000]):
+        return "ascii"
+    try:
+        raw.decode("utf-8")
+        return "utf-8"
+    except UnicodeDecodeError:
+        return "legacy-codepage"
+
+
 def read_text(path):
-    """Read a text file tolerating BOMs, UTF-16 and legacy code pages."""
+    """Read a text file tolerating BOMs, UTF-16 and legacy code pages (never raises on bad bytes)."""
     raw = Path(path).read_bytes()
     if raw.startswith((b"\xff\xfe", b"\xfe\xff")):
         return raw.decode("utf-16", errors="replace")

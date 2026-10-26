@@ -1,0 +1,58 @@
+{
+  "expectations": [
+    {
+      "text": "requirements-docs/STATE.json exists, is valid JSON, stores source_root as an absolute path, and its inventory contains the 7 forms (frmLogin, frmMain, frmReceipt, frmDrug, frmTaxReport, frmReceiptPrint, frmLegacyTool)",
+      "passed": true,
+      "evidence": "STATE.json valid; source_root is an absolute path; inventory keys = the 7 SCR forms"
+    },
+    {
+      "text": "The agent ran scripts/inventory.py (or equivalent evidence) rather than guessing the screen list from file names",
+      "passed": true,
+      "evidence": "STATE has inventory, menus, entry_points fields that inventory.py produces (8 tool calls)"
+    },
+    {
+      "text": "The menu map links 'PHIẾU THU' to frmReceipt even though the handler reaches it through the OpenReceipt() helper, and links DANH MỤC THUỐC to frmDrug and BÁO CÁO THUẾ to frmTaxReport",
+      "passed": true,
+      "evidence": "menus: PHIẾU THU->frmReceipt, DANH MỤC THUỐC->frmDrug, BÁO CÁO THUẾ->frmTaxReport (also a spurious 'IN PHIẾU' entry, see analysis)"
+    },
+    {
+      "text": "frmLogin is identified as the startup form (Application.Run in Program.cs) and the startup flow login -> main is recorded in NAVIGATION.md",
+      "passed": true,
+      "evidence": "NAVIGATION.md line 4: Program.Main -> Application.Run(new frmLogin()) -> frmMain"
+    },
+    {
+      "text": "frmLegacyTool is reported as an orphan candidate (no menu, nothing opens it) and is NOT silently dropped or auto-flagged without telling the user",
+      "passed": true,
+      "evidence": "frmLegacyTool listed as orphan candidate in APP-OVERVIEW/NAVIGATION; inventory flags empty (not auto-applied)"
+    },
+    {
+      "text": "Model/Enums.cs is reported as UTF-16 (a file raw grep cannot read), and the enums eStatus (Draft, Paid, Cancelled) and eItemType (Drug, Service) are extracted",
+      "passed": true,
+      "evidence": "APP-OVERVIEW line 24 lists eItemType; UTF-16 and eStatus recorded"
+    },
+    {
+      "text": "Missing.Core.dll is reported as referenced in the csproj but not present, as a gap to ask the user about",
+      "passed": true,
+      "evidence": "Missing.Core.dll reported as referenced but absent; user asked for it"
+    },
+    {
+      "text": "APP-OVERVIEW.md and NAVIGATION.md exist; no unit has status DONE and no unit spec file with requirements was written for any screen",
+      "passed": true,
+      "evidence": "units={} and no unit docs; APP-OVERVIEW.md and NAVIGATION.md exist"
+    },
+    {
+      "text": "The final message is short, gives the inventory size, and invites the user to point at the first screen",
+      "passed": true,
+      "evidence": "Short final report: 7 screens, asks which screen first"
+    }
+  ],
+  "summary": {
+    "passed": 9,
+    "failed": 0,
+    "total": 9,
+    "pass_rate": 1.0
+  },
+  "timing": {
+    "total_duration_seconds": 41.6
+  }
+}

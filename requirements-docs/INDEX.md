@@ -2,7 +2,7 @@
 
 (Generated from STATE.json and the unit docs. Do not edit by hand.)
 
-**Coverage**: 1/99 inventory items DONE (1%)
+**Coverage**: 1/100 in-scope inventory items DONE (1%)
 
 ## Modules
 | Module | Units | DONE | PARTIAL | PENDING |

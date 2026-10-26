@@ -45,6 +45,15 @@ def main():
         if msgs > rows:
             fails.append(f"{msgs} MessageBox calls in source but only {rows} rows in Messages section")
 
+    src_root = Path(st.get("source_root") or a.source)
+    reg = set(u.get("sources", {}))
+    for rel in list(reg):
+        base = Path(rel)
+        if base.suffix in (".cs", ".vb") and ".Designer" not in base.name:
+            for sib in (base.with_suffix(".Designer" + base.suffix), base.with_suffix(".resx")):
+                if (src_root / sib).exists() and str(sib) not in reg:
+                    fails.append(f"source {sib} exists but is not registered for this unit (drift in it would go unnoticed); "
+                                 f"run: state.py register {a.unit} --source \"{sib}\"")
     ids = re.findall(r"^#{2,4}\s*((?:REQ|FN|IMP)-[A-Za-z0-9-]+)", text, re.M)
     for k, n in Counter(ids).items():
         if n > 1:

@@ -1,0 +1,366 @@
+{
+  "metadata": {
+    "skill_name": "winforms-screen-to-requirements",
+    "skill_path": "<path/to/skill>",
+    "executor_model": "<model-name>",
+    "analyzer_model": "<model-name>",
+    "timestamp": "2026-10-26T10:47:44Z",
+    "evals_run": [
+      1,
+      2
+    ],
+    "runs_per_configuration": 3
+  },
+  "runs": [
+    {
+      "eval_id": 1,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 1.0,
+        "passed": 9,
+        "failed": 0,
+        "total": 9,
+        "time_seconds": 41.6,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "requirements-docs/STATE.json exists, is valid JSON, stores source_root as an absolute path, and its inventory contains the 7 forms (frmLogin, frmMain, frmReceipt, frmDrug, frmTaxReport, frmReceiptPrint, frmLegacyTool)",
+          "passed": true,
+          "evidence": "STATE.json valid; source_root is an absolute path; inventory keys = the 7 SCR forms"
+        },
+        {
+          "text": "The agent ran scripts/inventory.py (or equivalent evidence) rather than guessing the screen list from file names",
+          "passed": true,
+          "evidence": "STATE has inventory, menus, entry_points fields that inventory.py produces (8 tool calls)"
+        },
+        {
+          "text": "The menu map links 'PHI\u1ebeU THU' to frmReceipt even though the handler reaches it through the OpenReceipt() helper, and links DANH M\u1ee4C THU\u1ed0C to frmDrug and B\u00c1O C\u00c1O THU\u1ebe to frmTaxReport",
+          "passed": true,
+          "evidence": "menus: PHI\u1ebeU THU->frmReceipt, DANH M\u1ee4C THU\u1ed0C->frmDrug, B\u00c1O C\u00c1O THU\u1ebe->frmTaxReport (also a spurious 'IN PHI\u1ebeU' entry, see analysis)"
+        },
+        {
+          "text": "frmLogin is identified as the startup form (Application.Run in Program.cs) and the startup flow login -> main is recorded in NAVIGATION.md",
+          "passed": true,
+          "evidence": "NAVIGATION.md line 4: Program.Main -> Application.Run(new frmLogin()) -> frmMain"
+        },
+        {
+          "text": "frmLegacyTool is reported as an orphan candidate (no menu, nothing opens it) and is NOT silently dropped or auto-flagged without telling the user",
+          "passed": true,
+          "evidence": "frmLegacyTool listed as orphan candidate in APP-OVERVIEW/NAVIGATION; inventory flags empty (not auto-applied)"
+        },
+        {
+          "text": "Model/Enums.cs is reported as UTF-16 (a file raw grep cannot read), and the enums eStatus (Draft, Paid, Cancelled) and eItemType (Drug, Service) are extracted",
+          "passed": true,
+          "evidence": "APP-OVERVIEW line 24 lists eItemType; UTF-16 and eStatus recorded"
+        },
+        {
+          "text": "Missing.Core.dll is reported as referenced in the csproj but not present, as a gap to ask the user about",
+          "passed": true,
+          "evidence": "Missing.Core.dll reported as referenced but absent; user asked for it"
+        },
+        {
+          "text": "APP-OVERVIEW.md and NAVIGATION.md exist; no unit has status DONE and no unit spec file with requirements was written for any screen",
+          "passed": true,
+          "evidence": "units={} and no unit docs; APP-OVERVIEW.md and NAVIGATION.md exist"
+        },
+        {
+          "text": "The final message is short, gives the inventory size, and invites the user to point at the first screen",
+          "passed": true,
+          "evidence": "Short final report: 7 screens, asks which screen first"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "with_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.86,
+        "passed": 12,
+        "failed": 2,
+        "total": 14,
+        "time_seconds": 158.4,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The agent located frmReceipt from the visible strings (find_screen.py or equivalent), stated it as the match, and did not ask the user which form it is",
+          "passed": true,
+          "evidence": "Matched all 9 strings to frmReceipt; stated it; did not ask"
+        },
+        {
+          "text": "A unit file named exactly after the unit ID (e.g. SCR-<MODULE>-<Name>.md, ASCII) exists under modules/<MODULE>/units/ and the unit is registered in STATE.json with sources and aliases (frmReceipt, 'PHI\u1ebeU THU TI\u1ec0N')",
+          "passed": true,
+          "evidence": "modules/REC/units/SCR-REC-Receipt.md; STATE aliases ['PHI\u1ebeU THU TI\u1ec0N','frmReceipt']; sources registered (only frmReceipt.cs, Designer file missing, see analysis)"
+        },
+        {
+          "text": "Requirement IDs follow REQ-<MODULE>-<ShortName>-<nnn> with 3 digits and are not reused or duplicated",
+          "passed": true,
+          "evidence": "IDs REQ-REC-Receipt-001..008, 3-digit, no duplicates; counters match"
+        },
+        {
+          "text": "There are separate FN entries for total, payable and change with the exact formulas: total = sum(Qty x Price); payable = total - discount; change = tendered - payable",
+          "passed": true,
+          "evidence": "FN-REC-001..003 with Sum(Qty x Price), total-discount, tendered-payable"
+        },
+        {
+          "text": "Each FN has at least 3 test vectors with an edge case, one of them consistent with: lines 2x100,000 and 1x50,000, discount 20,000, tendered 250,000 -> total 250,000, payable 230,000, change 20,000",
+          "passed": false,
+          "evidence": "Each FN has 3 vectors incl. edge (e.g. 100,000 total, 150,000 discount -> -50,000) but none is the 250,000/230,000/20,000 case; assertion is over-specified"
+        },
+        {
+          "text": "The spec records that unparsable or empty discount/tendered text is treated as 0 (Parse returns 0)",
+          "passed": true,
+          "evidence": "IMP-REC-003 evidence: Parse returns 0 on bad input (cs:20-24)"
+        },
+        {
+          "text": "Save validation order is recorded exactly: patient required, then at least one line, then stock check only for lines of type Drug",
+          "passed": true,
+          "evidence": "REQ states checks run in order: patient, lines, Drug stock"
+        },
+        {
+          "text": "The Messages section lists all four messages: 'Vui l\u00f2ng ch\u1ecdn b\u1ec7nh nh\u00e2n', 'Kh\u00f4ng c\u00f3 d\u1ecbch v\u1ee5 \u0111\u1ec3 thu', 'Kh\u00f4ng \u0111\u1ee7 t\u1ed3n kho: <code>', '\u0110\u00e3 l\u01b0u phi\u1ebfu thu' with their trigger conditions",
+          "passed": true,
+          "evidence": "All four messages present with trigger conditions (counts 2/2/3/2)"
+        },
+        {
+          "text": "Data access lists tb_Receipt (Max(Id)+1 read, INSERT) and tb_Line (UPDATE ReceiptId), and states that there is no transaction",
+          "passed": true,
+          "evidence": "Data access lists tb_Receipt Max(Id)+1 and INSERT, tb_Line UPDATE; 'no try/catch, no transaction'"
+        },
+        {
+          "text": "The Coverage table lists all four handlers: btnSave_Click, btnPrint_Click, txtDiscount_EditValueChanged, txtTendered_EditValueChanged",
+          "passed": true,
+          "evidence": "Coverage table lists btnSave_Click, btnPrint_Click, txtDiscount_EditValueChanged, txtTendered_EditValueChanged"
+        },
+        {
+          "text": "The spec notes btnPrint is disabled until a successful save, and that the 'X\u00f3a d\u00f2ng' menu item exists in the Designer but has no handler (quirk or open question)",
+          "passed": true,
+          "evidence": "btnPrint disabled until save (REQ-006 + AC); mnuDeleteRow 'X\u00f3a d\u00f2ng' noted with no handler (Q-002)"
+        },
+        {
+          "text": "IMPs are raised for the Max+1 receipt number (concurrency), the non-atomic save, and missing validation of negative payable/change; they live in IMPROVEMENTS.md / the IMP section, and the legacy REQs still describe the old behavior unchanged",
+          "passed": true,
+          "evidence": "IMP-REC-001 (not atomic, Id racy), IMP-REC-003 (no numeric validation) etc.; 8 legacy REQs unchanged"
+        },
+        {
+          "text": "scripts/check_unit.py exits 0 for the unit, STATE.json shows the unit DONE with doc_hash and a rev >= 1, and INDEX.md was regenerated by state.py index (not hand-edited)",
+          "passed": false,
+          "evidence": "check_unit exit 0, doc_hash set, rev 1, INDEX regenerated; but status is PARTIAL not DONE (StockDal/Db/Receipt not in tree). PARTIAL is defensible; assertion needs revising"
+        },
+        {
+          "text": "The final reply is short (units, counts of REQ/BR/FN/IMP, notable findings, next screens, coverage) and does not paste the whole spec into chat",
+          "passed": true,
+          "evidence": "Final report is a short summary with counts, findings and next screens"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 1,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.67,
+        "passed": 6,
+        "failed": 3,
+        "total": 9,
+        "time_seconds": 27.9,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "requirements-docs/STATE.json exists, is valid JSON, stores source_root as an absolute path, and its inventory contains the 7 forms (frmLogin, frmMain, frmReceipt, frmDrug, frmTaxReport, frmReceiptPrint, frmLegacyTool)",
+          "passed": false,
+          "evidence": "No STATE.json; only README/APP-OVERVIEW/SCREEN-INVENTORY/MISSING-SOURCES/GLOSSARY/OPEN-QUESTIONS and screens/ stubs"
+        },
+        {
+          "text": "The agent ran scripts/inventory.py (or equivalent evidence) rather than guessing the screen list from file names",
+          "passed": true,
+          "evidence": "All 7 forms listed by reading the files (equivalent evidence); non-discriminating for a 7-file app"
+        },
+        {
+          "text": "The menu map links 'PHI\u1ebeU THU' to frmReceipt even though the handler reaches it through the OpenReceipt() helper, and links DANH M\u1ee4C THU\u1ed0C to frmDrug and B\u00c1O C\u00c1O THU\u1ebe to frmTaxReport",
+          "passed": true,
+          "evidence": "APP-OVERVIEW lists PHI\u1ebeU THU->frmReceipt, DANH M\u1ee4C THU\u1ed0C->frmDrug, B\u00c1O C\u00c1O THU\u1ebe->frmTaxReport"
+        },
+        {
+          "text": "frmLogin is identified as the startup form (Application.Run in Program.cs) and the startup flow login -> main is recorded in NAVIGATION.md",
+          "passed": false,
+          "evidence": "Startup frmLogin recorded in APP-OVERVIEW, but there is no NAVIGATION.md"
+        },
+        {
+          "text": "frmLegacyTool is reported as an orphan candidate (no menu, nothing opens it) and is NOT silently dropped or auto-flagged without telling the user",
+          "passed": true,
+          "evidence": "frmLegacyTool reported as dead code and the user asked to confirm"
+        },
+        {
+          "text": "Model/Enums.cs is reported as UTF-16 (a file raw grep cannot read), and the enums eStatus (Draft, Paid, Cancelled) and eItemType (Drug, Service) are extracted",
+          "passed": true,
+          "evidence": "GLOSSARY: eStatus Draft/Paid/Cancelled, eItemType Drug/Service, file is UTF-16"
+        },
+        {
+          "text": "Missing.Core.dll is reported as referenced in the csproj but not present, as a gap to ask the user about",
+          "passed": true,
+          "evidence": "Missing.Core.dll reported missing in MISSING-SOURCES.md"
+        },
+        {
+          "text": "APP-OVERVIEW.md and NAVIGATION.md exist; no unit has status DONE and no unit spec file with requirements was written for any screen",
+          "passed": false,
+          "evidence": "No NAVIGATION.md; also wrote per-screen stub files under screens/"
+        },
+        {
+          "text": "The final message is short, gives the inventory size, and invites the user to point at the first screen",
+          "passed": true,
+          "evidence": "Short final report listing 7 screens, asks for first screen"
+        }
+      ],
+      "notes": []
+    },
+    {
+      "eval_id": 2,
+      "configuration": "without_skill",
+      "run_number": 1,
+      "result": {
+        "pass_rate": 0.5,
+        "passed": 7,
+        "failed": 7,
+        "total": 14,
+        "time_seconds": 31.3,
+        "tokens": 0,
+        "tool_calls": 0,
+        "errors": 0
+      },
+      "expectations": [
+        {
+          "text": "The agent located frmReceipt from the visible strings (find_screen.py or equivalent), stated it as the match, and did not ask the user which form it is",
+          "passed": true,
+          "evidence": "Identified frmReceipt from the given strings; no question asked"
+        },
+        {
+          "text": "A unit file named exactly after the unit ID (e.g. SCR-<MODULE>-<Name>.md, ASCII) exists under modules/<MODULE>/units/ and the unit is registered in STATE.json with sources and aliases (frmReceipt, 'PHI\u1ebeU THU TI\u1ec0N')",
+          "passed": false,
+          "evidence": "Single free-form frmReceipt-requirements.md; no unit file, no STATE.json, no aliases/sources registration"
+        },
+        {
+          "text": "Requirement IDs follow REQ-<MODULE>-<ShortName>-<nnn> with 3 digits and are not reused or duplicated",
+          "passed": false,
+          "evidence": "No REQ IDs (0 occurrences)"
+        },
+        {
+          "text": "There are separate FN entries for total, payable and change with the exact formulas: total = sum(Qty x Price); payable = total - discount; change = tendered - payable",
+          "passed": false,
+          "evidence": "Formulas present as numbered steps in a Calculations section, but no separate FN entries"
+        },
+        {
+          "text": "Each FN has at least 3 test vectors with an edge case, one of them consistent with: lines 2x100,000 and 1x50,000, discount 20,000, tendered 250,000 -> total 250,000, payable 230,000, change 20,000",
+          "passed": false,
+          "evidence": "No test vectors ('->' count 0)"
+        },
+        {
+          "text": "The spec records that unparsable or empty discount/tendered text is treated as 0 (Parse returns 0)",
+          "passed": true,
+          "evidence": "States unparseable or empty input is treated as 0"
+        },
+        {
+          "text": "Save validation order is recorded exactly: patient required, then at least one line, then stock check only for lines of type Drug",
+          "passed": true,
+          "evidence": "'Validation on Save (in order, stops at first failure)': patient, lines, Drug stock"
+        },
+        {
+          "text": "The Messages section lists all four messages: 'Vui l\u00f2ng ch\u1ecdn b\u1ec7nh nh\u00e2n', 'Kh\u00f4ng c\u00f3 d\u1ecbch v\u1ee5 \u0111\u1ec3 thu', 'Kh\u00f4ng \u0111\u1ee7 t\u1ed3n kho: <code>', '\u0110\u00e3 l\u01b0u phi\u1ebfu thu' with their trigger conditions",
+          "passed": true,
+          "evidence": "All four messages present with conditions"
+        },
+        {
+          "text": "Data access lists tb_Receipt (Max(Id)+1 read, INSERT) and tb_Line (UPDATE ReceiptId), and states that there is no transaction",
+          "passed": true,
+          "evidence": "tb_Receipt (Max(Id)+1, insert) and tb_Line; 'No transaction wraps insert and line attach'"
+        },
+        {
+          "text": "The Coverage table lists all four handlers: btnSave_Click, btnPrint_Click, txtDiscount_EditValueChanged, txtTendered_EditValueChanged",
+          "passed": false,
+          "evidence": "No Coverage table; handler names btnSave_Click/btnPrint_Click/EditValueChanged do not appear"
+        },
+        {
+          "text": "The spec notes btnPrint is disabled until a successful save, and that the 'X\u00f3a d\u00f2ng' menu item exists in the Designer but has no handler (quirk or open question)",
+          "passed": true,
+          "evidence": "Print disabled until save; X\u00f3a d\u00f2ng menu has no handler noted"
+        },
+        {
+          "text": "IMPs are raised for the Max+1 receipt number (concurrency), the non-atomic save, and missing validation of negative payable/change; they live in IMPROVEMENTS.md / the IMP section, and the legacy REQs still describe the old behavior unchanged",
+          "passed": false,
+          "evidence": "No improvement proposals; anomalies are listed under 'Open anomalies' without IMP entries"
+        },
+        {
+          "text": "scripts/check_unit.py exits 0 for the unit, STATE.json shows the unit DONE with doc_hash and a rev >= 1, and INDEX.md was regenerated by state.py index (not hand-edited)",
+          "passed": false,
+          "evidence": "No STATE.json, no gate, no INDEX"
+        },
+        {
+          "text": "The final reply is short (units, counts of REQ/BR/FN/IMP, notable findings, next screens, coverage) and does not paste the whole spec into chat",
+          "passed": true,
+          "evidence": "Short final report"
+        }
+      ],
+      "notes": []
+    }
+  ],
+  "run_summary": {
+    "with_skill": {
+      "pass_rate": {
+        "mean": 0.93,
+        "stddev": 0.099,
+        "min": 0.86,
+        "max": 1.0
+      },
+      "time_seconds": {
+        "mean": 100.0,
+        "stddev": 82.5901,
+        "min": 41.6,
+        "max": 158.4
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "without_skill": {
+      "pass_rate": {
+        "mean": 0.585,
+        "stddev": 0.1202,
+        "min": 0.5,
+        "max": 0.67
+      },
+      "time_seconds": {
+        "mean": 29.6,
+        "stddev": 2.4042,
+        "min": 27.9,
+        "max": 31.3
+      },
+      "tokens": {
+        "mean": 0.0,
+        "stddev": 0.0,
+        "min": 0,
+        "max": 0
+      }
+    },
+    "delta": {
+      "pass_rate": "+0.35",
+      "time_seconds": "+70.4",
+      "tokens": "+0"
+    }
+  },
+  "notes": []
+}

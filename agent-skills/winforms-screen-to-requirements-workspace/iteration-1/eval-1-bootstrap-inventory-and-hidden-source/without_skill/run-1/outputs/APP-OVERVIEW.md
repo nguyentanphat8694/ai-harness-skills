@@ -1,0 +1,12 @@
+# App overview
+- Name (main window title): "PHẦN MỀM PHÒNG KHÁM MẪU" (sample clinic software). UI language: Vietnamese.
+- Stack: C# WinForms, DevExpress v16.1 (XtraEditors, XtraBars Ribbon), SQL Server via System.Data.SqlClient, namespace MiniClinic. Third-party assembly Missing.Core.dll (HintPath ..\libs\, not provided).
+- Layout: App/ (Program, frmLogin, frmMain), Forms/ (feature screens), Model/ (Enums, ReceiptDal).
+- Startup: Program.Main -> frmLogin.
+- Navigation: frmLogin (credentials checked by UserDal.Check, sets Session.CurrentUser) -> frmMain (ribbon RibbonForm; login form only hidden, not closed).
+  - PHIẾU THU -> frmReceipt (modeless, single instance; re-activates if open)
+  - DANH MỤC THUỐC -> frmDrug (modal dialog)
+  - BÁO CÁO THUẾ -> frmTaxReport (modal dialog)
+  - frmReceipt -> IN PHIẾU -> frmReceiptPrint (modal)
+- Data layer: only ReceiptDal is present (tables tb_Receipt, tb_Line, proc sp_RebuildIndexes). Other DALs (UserDal, DrugDal, StockDal), Db, Session, entities not in source.
+- Roles/permissions: none visible so far (Session.CurrentUser used but no role check seen in provided code).
