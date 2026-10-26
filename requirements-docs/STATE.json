@@ -1,0 +1,2054 @@
+{
+  "schema": 2,
+  "root": "requirements-docs",
+  "source_root": "src",
+  "hash_method": "sha1-lf",
+  "doc_language": "en",
+  "counters": {
+    "REQ-TT-PhieuThu": 9,
+    "BR-TT": 7,
+    "FN-TT": 3,
+    "IMP-TT": 6,
+    "Q": 5
+  },
+  "inventory": {
+    "SCR:frmKey": {
+      "type": "SCR",
+      "class": "frmKey",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospital.Model/frmKey.cs",
+        "Hospital.Model/frmKey.Designer.cs"
+      ],
+      "caption": "ĐĂNG KÝ SỬ DỤNG PHẦN MỀM",
+      "unit": null
+    },
+    "SCR:LO030100": {
+      "type": "SCR",
+      "class": "LO030100",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospital.App/LO030100.cs",
+        "Hospital.App/LO030100.Designer.cs"
+      ],
+      "caption": "Frm_Login",
+      "unit": null
+    },
+    "SCR:LO010100": {
+      "type": "SCR",
+      "class": "LO010100",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospital.App/LO010100.cs",
+        "Hospital.App/LO010100.Designer.cs"
+      ],
+      "caption": "Frm_Login",
+      "unit": null
+    },
+    "SCR:LO020100": {
+      "type": "SCR",
+      "class": "LO020100",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospital.App/LO020100.cs",
+        "Hospital.App/LO020100.Designer.cs"
+      ],
+      "caption": "LO020100",
+      "unit": null
+    },
+    "SCR:frmMain": {
+      "type": "SCR",
+      "class": "frmMain",
+      "base": "DevExpress.XtraBars.Ribbon.RibbonForm",
+      "files": [
+        "Hospital.App/frmMain.cs",
+        "Hospital.App/frmMain.Designer.cs"
+      ],
+      "caption": "PHẦN MỀM QUẢN LÝ PHÒNG KHÁM",
+      "unit": null
+    },
+    "SCR:CD020100": {
+      "type": "SCR",
+      "class": "CD020100",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/CD020100.cs",
+        "Hospita.View/CD020100.Designer.cs"
+      ],
+      "caption": "CD020100",
+      "unit": null
+    },
+    "SCR:frmDSChoTH": {
+      "type": "SCR",
+      "class": "frmDSChoTH",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/frmDSChoTH.cs",
+        "Hospita.View/frmDSChoTH.Designer.cs"
+      ],
+      "caption": "DANH SÁCH CHỜ XÉT NGHIỆM",
+      "unit": null
+    },
+    "SCR:CD010100": {
+      "type": "SCR",
+      "class": "CD010100",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/CD010100.cs",
+        "Hospita.View/CD010100.Designer.cs"
+      ],
+      "caption": "CD010100",
+      "unit": null
+    },
+    "SCR:frmDSSieuAm": {
+      "type": "SCR",
+      "class": "frmDSSieuAm",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Sieu Am/frmDSSieuAm.cs",
+        "Hospita.View/Sieu Am/frmDSSieuAm.Designer.cs"
+      ],
+      "caption": "BỆNH NHÂN ĐÃ SIÊU ÂM",
+      "unit": null
+    },
+    "CMP:USA2": {
+      "type": "CMP",
+      "class": "USA2",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Sieu Am/USA2.cs",
+        "Hospita.View/Sieu Am/USA2.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:USANew": {
+      "type": "CMP",
+      "class": "USANew",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Sieu Am/USANew.cs",
+        "Hospita.View/Sieu Am/USANew.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmDSChoSA": {
+      "type": "SCR",
+      "class": "frmDSChoSA",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Sieu Am/frmDSChoSA.cs",
+        "Hospita.View/Sieu Am/frmDSChoSA.Designer.cs"
+      ],
+      "caption": "BỆNH NHÂN CHỜ SIÊU ÂM",
+      "unit": null
+    },
+    "CMP:WebCamCapture": {
+      "type": "CMP",
+      "class": "WebCamCapture",
+      "base": "System.Windows.Forms.UserControl",
+      "files": [
+        "Hospita.View/Sieu Am/WebCamCapture.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:SA000000": {
+      "type": "SCR",
+      "class": "SA000000",
+      "base": "DevExpress.XtraBars.Ribbon.RibbonForm",
+      "files": [
+        "Hospita.View/Sieu Am/SA000000.cs",
+        "Hospita.View/Sieu Am/SA000000.Designer.cs"
+      ],
+      "caption": "QUẢN LÝ SIÊU ÂM",
+      "unit": null
+    },
+    "CMP:USieuAm": {
+      "type": "CMP",
+      "class": "USieuAm",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Sieu Am/USieuAm.cs",
+        "Hospita.View/Sieu Am/USieuAm.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UChoSA": {
+      "type": "CMP",
+      "class": "UChoSA",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Sieu Am/UChoSA.cs",
+        "Hospita.View/Sieu Am/UChoSA.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmSieuAm": {
+      "type": "SCR",
+      "class": "frmSieuAm",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Sieu Am/frmSieuAm.cs",
+        "Hospita.View/Sieu Am/frmSieuAm.Designer.cs"
+      ],
+      "caption": "PHIẾU SIÊU ÂM",
+      "unit": null
+    },
+    "CMP:UMainSA": {
+      "type": "CMP",
+      "class": "UMainSA",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Sieu Am/UMainSA.cs",
+        "Hospita.View/Sieu Am/UMainSA.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:FrmChuyenDichVu": {
+      "type": "SCR",
+      "class": "FrmChuyenDichVu",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Sieu Am/FrmChuyenDichVu.cs",
+        "Hospita.View/Sieu Am/FrmChuyenDichVu.Designer.cs"
+      ],
+      "caption": "CHUYỂN DỊCH VỤ",
+      "unit": null
+    },
+    "CMP:UNewCapture": {
+      "type": "CMP",
+      "class": "UNewCapture",
+      "base": "UCapture",
+      "files": [
+        "Hospita.View/Sieu Am/UNewCapture.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:USA_Capture": {
+      "type": "CMP",
+      "class": "USA_Capture",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Sieu Am/USA_Capture.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:FrmTamUng": {
+      "type": "SCR",
+      "class": "FrmTamUng",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/TKBenhNhan/FrmTamUng.cs",
+        "Hospita.View/TKBenhNhan/FrmTamUng.Designer.cs"
+      ],
+      "caption": "PHIẾU TẠM ỨNG",
+      "unit": null
+    },
+    "CMP:ULichLamViec": {
+      "type": "CMP",
+      "class": "ULichLamViec",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/LichLamViec/ULichLamViec.cs",
+        "Hospita.View/LichLamViec/ULichLamViec.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:FrmChucNangLLV": {
+      "type": "SCR",
+      "class": "FrmChucNangLLV",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/LichLamViec/FrmChucNangLLV.cs",
+        "Hospita.View/LichLamViec/FrmChucNangLLV.Designer.cs"
+      ],
+      "caption": "CHỨC NĂNG",
+      "unit": null
+    },
+    "CMP:UNgay": {
+      "type": "CMP",
+      "class": "UNgay",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/LichLamViec/UNgay.cs",
+        "Hospita.View/LichLamViec/UNgay.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmLichLamViec": {
+      "type": "SCR",
+      "class": "frmLichLamViec",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/LichLamViec/frmLichLamViec.cs",
+        "Hospita.View/LichLamViec/frmLichLamViec.Designer.cs"
+      ],
+      "caption": "LỊCH LÀM VIỆC",
+      "unit": null
+    },
+    "SCR:FormCommon": {
+      "type": "SCR",
+      "class": "FormCommon",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Common/FormCommon.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmDSPhieuXN": {
+      "type": "SCR",
+      "class": "frmDSPhieuXN",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Xet Nghiem/frmDSPhieuXN.cs",
+        "Hospita.View/Xet Nghiem/frmDSPhieuXN.Designer.cs"
+      ],
+      "caption": "BỆNH NHÂN CHỜ KHÁM",
+      "unit": null
+    },
+    "CMP:UDSPhieuXN": {
+      "type": "CMP",
+      "class": "UDSPhieuXN",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Xet Nghiem/UDSPhieuXN.cs",
+        "Hospita.View/Xet Nghiem/UDSPhieuXN.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UPhieuXetNghiem": {
+      "type": "CMP",
+      "class": "UPhieuXetNghiem",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Xet Nghiem/UPhieuXetNghiem.cs",
+        "Hospita.View/Xet Nghiem/UPhieuXetNghiem.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmPhieuXetNghiem": {
+      "type": "SCR",
+      "class": "frmPhieuXetNghiem",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Xet Nghiem/frmPhieuXetNghiem.cs",
+        "Hospita.View/Xet Nghiem/frmPhieuXetNghiem.Designer.cs"
+      ],
+      "caption": "PHIẾU XÉT NGHIỆM",
+      "unit": null
+    },
+    "CMP:UDSChoXN": {
+      "type": "CMP",
+      "class": "UDSChoXN",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Xet Nghiem/UDSChoXN.cs",
+        "Hospita.View/Xet Nghiem/UDSChoXN.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmDSChoXN": {
+      "type": "SCR",
+      "class": "frmDSChoXN",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Xet Nghiem/frmDSChoXN.cs",
+        "Hospita.View/Xet Nghiem/frmDSChoXN.Designer.cs"
+      ],
+      "caption": "BỆNH NHÂN CHỜ KHÁM",
+      "unit": null
+    },
+    "SCR:XN000000": {
+      "type": "SCR",
+      "class": "XN000000",
+      "base": "DevExpress.XtraBars.Ribbon.RibbonForm",
+      "files": [
+        "Hospita.View/Xet Nghiem/XN000000.cs",
+        "Hospita.View/Xet Nghiem/XN000000.Designer.cs"
+      ],
+      "caption": "QUẢN LÝ XÉT NGHIỆM",
+      "unit": null
+    },
+    "SCR:FrmQLyXetNghiemSimple": {
+      "type": "SCR",
+      "class": "FrmQLyXetNghiemSimple",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Xet Nghiem/FrmQLyXetNghiemSimple.cs",
+        "Hospita.View/Xet Nghiem/FrmQLyXetNghiemSimple.Designer.cs"
+      ],
+      "caption": "QUẢN LÝ XÉT NGHIỆM",
+      "unit": null
+    },
+    "CMP:UTKSuDungThuoc": {
+      "type": "CMP",
+      "class": "UTKSuDungThuoc",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/ThongKe/UTKSuDungThuoc.cs",
+        "Hospita.View/ThongKe/UTKSuDungThuoc.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UTKKhamBenh": {
+      "type": "CMP",
+      "class": "UTKKhamBenh",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/ThongKe/UTKKhamBenh.cs",
+        "Hospita.View/ThongKe/UTKKhamBenh.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmTKKhamBenh": {
+      "type": "SCR",
+      "class": "frmTKKhamBenh",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/ThongKe/frmTKKhamBenh.cs",
+        "Hospita.View/ThongKe/frmTKKhamBenh.Designer.cs"
+      ],
+      "caption": "THỐNG KÊ KHÁM BỆNH",
+      "unit": null
+    },
+    "SCR:Frm_DMDichVu": {
+      "type": "SCR",
+      "class": "Frm_DMDichVu",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMDichVu.cs",
+        "Hospita.View/DM/Frm_DMDichVu.Designer.cs"
+      ],
+      "caption": "DANH MỤC DỊCH VỤ",
+      "unit": null
+    },
+    "SCR:Frm_DMThuoc": {
+      "type": "SCR",
+      "class": "Frm_DMThuoc",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMThuoc.cs",
+        "Hospita.View/DM/Frm_DMThuoc.Designer.cs"
+      ],
+      "caption": "DANH MỤC THUỐC",
+      "unit": null
+    },
+    "SCR:Frm_DMXetNghiem": {
+      "type": "SCR",
+      "class": "Frm_DMXetNghiem",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMXetNghiem.cs",
+        "Hospita.View/DM/Frm_DMXetNghiem.Designer.cs"
+      ],
+      "caption": "DANH MỤC XÉT NGHIỆM",
+      "unit": null
+    },
+    "SCR:Frm_DMUser": {
+      "type": "SCR",
+      "class": "Frm_DMUser",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMUser.cs",
+        "Hospita.View/DM/Frm_DMUser.Designer.cs"
+      ],
+      "caption": "DANH MỤC USER",
+      "unit": null
+    },
+    "SCR:Frm_DMTSo": {
+      "type": "SCR",
+      "class": "Frm_DMTSo",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMTSo.cs",
+        "Hospita.View/DM/Frm_DMTSo.Designer.cs"
+      ],
+      "caption": "THAM SỐ CẤU HÌNH",
+      "unit": null
+    },
+    "SCR:BN020100": {
+      "type": "SCR",
+      "class": "BN020100",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/BN020100.cs",
+        "Hospita.View/DM/BN020100.Designer.cs"
+      ],
+      "caption": "THÔNG TIN BỆNH NHÂN",
+      "unit": null
+    },
+    "SCR:Frm_DMQuan": {
+      "type": "SCR",
+      "class": "Frm_DMQuan",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMQuan.cs",
+        "Hospita.View/DM/Frm_DMQuan.Designer.cs"
+      ],
+      "caption": "DANH  MỤC QUẬN",
+      "unit": null
+    },
+    "SCR:Frm_DMPK": {
+      "type": "SCR",
+      "class": "Frm_DMPK",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMPK.cs",
+        "Hospita.View/DM/Frm_DMPK.Designer.cs"
+      ],
+      "caption": "DANH MỤC PHÒNG KHÁM",
+      "unit": null
+    },
+    "SCR:Frm_DMDonVi": {
+      "type": "SCR",
+      "class": "Frm_DMDonVi",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMDonVi.cs",
+        "Hospita.View/DM/Frm_DMDonVi.Designer.cs"
+      ],
+      "caption": "DANH MỤC ĐƠN VỊ",
+      "unit": null
+    },
+    "SCR:frmText": {
+      "type": "SCR",
+      "class": "frmText",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/frmText.cs",
+        "Hospita.View/DM/frmText.Designer.cs"
+      ],
+      "caption": "PHÁC ĐỒ",
+      "unit": null
+    },
+    "SCR:Frm_DMKho": {
+      "type": "SCR",
+      "class": "Frm_DMKho",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMKho.cs",
+        "Hospita.View/DM/Frm_DMKho.Designer.cs"
+      ],
+      "caption": "DANH MỤC KHO",
+      "unit": null
+    },
+    "SCR:Frm_DMUser_Nhom": {
+      "type": "SCR",
+      "class": "Frm_DMUser_Nhom",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMUser_Nhom.cs",
+        "Hospita.View/DM/Frm_DMUser_Nhom.Designer.cs"
+      ],
+      "caption": "DANH MỤC NHÓM USER",
+      "unit": null
+    },
+    "SCR:Frm_DMNhanSu": {
+      "type": "SCR",
+      "class": "Frm_DMNhanSu",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMNhanSu.cs",
+        "Hospita.View/DM/Frm_DMNhanSu.Designer.cs"
+      ],
+      "caption": "DANH MỤC NHÂN SỰ",
+      "unit": null
+    },
+    "SCR:Frm_DMTinh": {
+      "type": "SCR",
+      "class": "Frm_DMTinh",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMTinh.cs",
+        "Hospita.View/DM/Frm_DMTinh.Designer.cs"
+      ],
+      "caption": "DANH MỤC TỈNH",
+      "unit": null
+    },
+    "SCR:Frm_DMNhomXetNghiem": {
+      "type": "SCR",
+      "class": "Frm_DMNhomXetNghiem",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMNhomXetNghiem.cs",
+        "Hospita.View/DM/Frm_DMNhomXetNghiem.Designer.cs"
+      ],
+      "caption": "DANH MỤC NHÓM XÉT NGHIỆM",
+      "unit": null
+    },
+    "SCR:Frm_DMNhomDichVu": {
+      "type": "SCR",
+      "class": "Frm_DMNhomDichVu",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMNhomDichVu.cs",
+        "Hospita.View/DM/Frm_DMNhomDichVu.Designer.cs"
+      ],
+      "caption": "DANH MỤC NHÓM DỊCH VỤ",
+      "unit": null
+    },
+    "SCR:Frm_DMLK": {
+      "type": "SCR",
+      "class": "Frm_DMLK",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMLK.cs",
+        "Hospita.View/DM/Frm_DMLK.Designer.cs"
+      ],
+      "caption": "DANH MỤC LOẠI KHÁM",
+      "unit": null
+    },
+    "SCR:Frm_DMMau": {
+      "type": "SCR",
+      "class": "Frm_DMMau",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMMau.cs",
+        "Hospita.View/DM/Frm_DMMau.Designer.cs"
+      ],
+      "caption": "DANH MỤC MẪU",
+      "unit": null
+    },
+    "SCR:Frm_DMNgheNghiep": {
+      "type": "SCR",
+      "class": "Frm_DMNgheNghiep",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMNgheNghiep.cs",
+        "Hospita.View/DM/Frm_DMNgheNghiep.Designer.cs"
+      ],
+      "caption": "DANH MỤC PHÒNG KHÁM",
+      "unit": null
+    },
+    "SCR:Frm_DMICD": {
+      "type": "SCR",
+      "class": "Frm_DMICD",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/Frm_DMICD.cs",
+        "Hospita.View/DM/Frm_DMICD.Designer.cs"
+      ],
+      "caption": "DANH  MỤC CHẨN ĐOÁN",
+      "unit": null
+    },
+    "SCR:BN010100": {
+      "type": "SCR",
+      "class": "BN010100",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/DM/BN010100.cs",
+        "Hospita.View/DM/BN010100.Designer.cs"
+      ],
+      "caption": "DANH SÁCH BỆNH NHÂN",
+      "unit": null
+    },
+    "CMP:UDSChoKham": {
+      "type": "CMP",
+      "class": "UDSChoKham",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Benh An/UDSChoKham.cs",
+        "Hospita.View/Benh An/UDSChoKham.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmDSChoKham": {
+      "type": "SCR",
+      "class": "frmDSChoKham",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Benh An/frmDSChoKham.cs",
+        "Hospita.View/Benh An/frmDSChoKham.Designer.cs"
+      ],
+      "caption": "BỆNH NHÂN CHỜ KHÁM",
+      "unit": null
+    },
+    "SCR:FrmPhieuKhamChung": {
+      "type": "SCR",
+      "class": "FrmPhieuKhamChung",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Benh An/FrmPhieuKhamChung.cs",
+        "Hospita.View/Benh An/FrmPhieuKhamChung.Designer.cs"
+      ],
+      "caption": "PHIẾU KHÁM BỆNH",
+      "unit": null
+    },
+    "CMP:UDaKham": {
+      "type": "CMP",
+      "class": "UDaKham",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Benh An/UDaKham.cs",
+        "Hospita.View/Benh An/UDaKham.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmDSDaKham": {
+      "type": "SCR",
+      "class": "frmDSDaKham",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Benh An/frmDSDaKham.cs",
+        "Hospita.View/Benh An/frmDSDaKham.Designer.cs"
+      ],
+      "caption": "BỆNH NHÂN ĐÃ KHÁM",
+      "unit": null
+    },
+    "SCR:frmBenhAn": {
+      "type": "SCR",
+      "class": "frmBenhAn",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Benh An/frmBenhAn.cs",
+        "Hospita.View/Benh An/frmBenhAn.Designer.cs"
+      ],
+      "caption": "BỆNH ÁN",
+      "unit": null
+    },
+    "SCR:FrmMainBenhAn": {
+      "type": "SCR",
+      "class": "FrmMainBenhAn",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Benh An/FrmMainBenhAn.cs",
+        "Hospita.View/Benh An/FrmMainBenhAn.Designer.cs"
+      ],
+      "caption": "PHIẾU KHÁM BỆNH",
+      "unit": null
+    },
+    "SCR:BA000000": {
+      "type": "SCR",
+      "class": "BA000000",
+      "base": "DevExpress.XtraBars.Ribbon.RibbonForm",
+      "files": [
+        "Hospita.View/Benh An/BA000000.cs",
+        "Hospita.View/Benh An/BA000000.Designer.cs"
+      ],
+      "caption": "PHẦN MỀM QUẢN LÝ PHÒNG KHÁM",
+      "unit": null
+    },
+    "CMP:UChoKham": {
+      "type": "CMP",
+      "class": "UChoKham",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Benh An/UChoKham.cs",
+        "Hospita.View/Benh An/UChoKham.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UNhatKy": {
+      "type": "CMP",
+      "class": "UNhatKy",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Benh An/UNhatKy.cs",
+        "Hospita.View/Benh An/UNhatKy.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UDichVuUtils": {
+      "type": "CMP",
+      "class": "UDichVuUtils",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/UserControl/UDichVuUtils.cs",
+        "Hospita.View/UserControl/UDichVuUtils.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UImages": {
+      "type": "CMP",
+      "class": "UImages",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/UserControl/UImages.cs",
+        "Hospita.View/UserControl/UImages.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:TI010100": {
+      "type": "CMP",
+      "class": "TI010100",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/UserControl/TI010100.cs",
+        "Hospita.View/UserControl/TI010100.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UD010100": {
+      "type": "CMP",
+      "class": "UD010100",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/UserControl/UD010100.cs",
+        "Hospita.View/UserControl/UD010100.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UImage": {
+      "type": "CMP",
+      "class": "UImage",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/UserControl/UImage.cs",
+        "Hospita.View/UserControl/UImage.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UT010100": {
+      "type": "CMP",
+      "class": "UT010100",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/UserControl/UT010100.cs",
+        "Hospita.View/UserControl/UT010100.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UGoTat": {
+      "type": "CMP",
+      "class": "UGoTat",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/UserControl/UGoTat.cs",
+        "Hospita.View/UserControl/UGoTat.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UTimBN": {
+      "type": "CMP",
+      "class": "UTimBN",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/UserControl/UTimBN.cs",
+        "Hospita.View/UserControl/UTimBN.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UHenKham": {
+      "type": "CMP",
+      "class": "UHenKham",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/UserControl/UHenKham.cs",
+        "Hospita.View/UserControl/UHenKham.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UMauBA": {
+      "type": "CMP",
+      "class": "UMauBA",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/UserControl/UMauBA.cs",
+        "Hospita.View/UserControl/UMauBA.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:RP010100": {
+      "type": "SCR",
+      "class": "RP010100",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Report/RP010100.cs",
+        "Hospita.View/Report/RP010100.Designer.cs"
+      ],
+      "caption": "THIẾT KẾ IN ẤN",
+      "unit": null
+    },
+    "SCR:frmDSChoThuTien": {
+      "type": "SCR",
+      "class": "frmDSChoThuTien",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Thu Tien/frmDSChoThuTien.cs",
+        "Hospita.View/Thu Tien/frmDSChoThuTien.Designer.cs"
+      ],
+      "caption": "PHIẾU THU TIỀN",
+      "unit": null
+    },
+    "CMP:UDSDaThu": {
+      "type": "CMP",
+      "class": "UDSDaThu",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Thu Tien/UDSDaThu.cs",
+        "Hospita.View/Thu Tien/UDSDaThu.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "CMP:UMainThuTien": {
+      "type": "CMP",
+      "class": "UMainThuTien",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Thu Tien/UMainThuTien.cs",
+        "Hospita.View/Thu Tien/UMainThuTien.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmPhieuThu": {
+      "type": "SCR",
+      "class": "frmPhieuThu",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Thu Tien/frmPhieuThu.cs",
+        "Hospita.View/Thu Tien/frmPhieuThu.Designer.cs"
+      ],
+      "caption": "PHIẾU THU TIỀN",
+      "unit": "SCR-TT-PhieuThu"
+    },
+    "SCR:TT000000": {
+      "type": "SCR",
+      "class": "TT000000",
+      "base": "DevExpress.XtraBars.Ribbon.RibbonForm",
+      "files": [
+        "Hospita.View/Thu Tien/TT000000.cs",
+        "Hospita.View/Thu Tien/TT000000.Designer.cs"
+      ],
+      "caption": "DK000000",
+      "unit": null
+    },
+    "CMP:UDSChoThuTien": {
+      "type": "CMP",
+      "class": "UDSChoThuTien",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Thu Tien/UDSChoThuTien.cs",
+        "Hospita.View/Thu Tien/UDSChoThuTien.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmDSDaThu": {
+      "type": "SCR",
+      "class": "frmDSDaThu",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Thu Tien/frmDSDaThu.cs",
+        "Hospita.View/Thu Tien/frmDSDaThu.Designer.cs"
+      ],
+      "caption": "PHIẾU THU TIỀN",
+      "unit": null
+    },
+    "CMP:UNhapKho": {
+      "type": "CMP",
+      "class": "UNhapKho",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Nhap Kho/UNhapKho.cs",
+        "Hospita.View/Nhap Kho/UNhapKho.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:frmNhapkho": {
+      "type": "SCR",
+      "class": "frmNhapkho",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Nhap Kho/frmNhapkho.cs",
+        "Hospita.View/Nhap Kho/frmNhapkho.Designer.cs"
+      ],
+      "caption": "NHẬP KHO",
+      "unit": null
+    },
+    "SCR:FrmBCTonKho": {
+      "type": "SCR",
+      "class": "FrmBCTonKho",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Nhap Kho/FrmBCTonKho.cs",
+        "Hospita.View/Nhap Kho/FrmBCTonKho.Designer.cs"
+      ],
+      "caption": "BÁO CÁO TỒN KHO",
+      "unit": null
+    },
+    "SCR:frmDSHenKham": {
+      "type": "SCR",
+      "class": "frmDSHenKham",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Dang Ky/frmDSHenKham.cs",
+        "Hospita.View/Dang Ky/frmDSHenKham.Designer.cs"
+      ],
+      "caption": "DANH SÁCH HẸN KHÁM",
+      "unit": null
+    },
+    "SCR:FrmMainDangKy": {
+      "type": "SCR",
+      "class": "FrmMainDangKy",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Dang Ky/FrmMainDangKy.cs",
+        "Hospita.View/Dang Ky/FrmMainDangKy.Designer.cs"
+      ],
+      "caption": "PHIẾU KHÁM BỆNH",
+      "unit": null
+    },
+    "SCR:frmDangKy": {
+      "type": "SCR",
+      "class": "frmDangKy",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Dang Ky/frmDangKy.cs",
+        "Hospita.View/Dang Ky/frmDangKy.Designer.cs"
+      ],
+      "caption": "ĐĂNG KÝ KHÁM",
+      "unit": null
+    },
+    "CMP:UDangKy": {
+      "type": "CMP",
+      "class": "UDangKy",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Dang Ky/UDangKy.cs",
+        "Hospita.View/Dang Ky/UDangKy.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    },
+    "SCR:DK000000": {
+      "type": "SCR",
+      "class": "DK000000",
+      "base": "DevExpress.XtraBars.Ribbon.RibbonForm",
+      "files": [
+        "Hospita.View/Dang Ky/DK000000.cs",
+        "Hospita.View/Dang Ky/DK000000.Designer.cs"
+      ],
+      "caption": "QUẢN LÝ ĐĂNG KÝ",
+      "unit": null
+    },
+    "SCR:frmDSDangKy": {
+      "type": "SCR",
+      "class": "frmDSDangKy",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/Dang Ky/frmDSDangKy.cs",
+        "Hospita.View/Dang Ky/frmDSDangKy.Designer.cs"
+      ],
+      "caption": "DANH SÁCH HẸN KHÁM",
+      "unit": null
+    },
+    "CMP:UDSDangKy": {
+      "type": "CMP",
+      "class": "UDSDangKy",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/Dang Ky/UDSDangKy.cs",
+        "Hospita.View/Dang Ky/UDSDangKy.Designer.cs"
+      ],
+      "caption": "DANH SÁCH ĐĂNG KÝ",
+      "unit": null
+    },
+    "SCR:FrmCapNhatNo": {
+      "type": "SCR",
+      "class": "FrmCapNhatNo",
+      "base": "DevExpress.XtraEditors.XtraForm",
+      "files": [
+        "Hospita.View/QLyBenhNhan/FrmCapNhatNo.cs",
+        "Hospita.View/QLyBenhNhan/FrmCapNhatNo.Designer.cs"
+      ],
+      "caption": "FrmCapNhatNo",
+      "unit": null
+    },
+    "CMP:UBenhNhan": {
+      "type": "CMP",
+      "class": "UBenhNhan",
+      "base": "DevExpress.XtraEditors.XtraUserControl",
+      "files": [
+        "Hospita.View/QLyBenhNhan/UBenhNhan.cs",
+        "Hospita.View/QLyBenhNhan/UBenhNhan.Designer.cs"
+      ],
+      "caption": "",
+      "unit": null
+    }
+  },
+  "units": {
+    "SCR-TT-PhieuThu": {
+      "status": "DONE",
+      "rev": 1,
+      "sources": {
+        "Hospita.View/Thu Tien/frmPhieuThu.cs": "57ab19a355a694cc1103c5db058fa546350def78",
+        "Hospita.View/Thu Tien/frmPhieuThu.Designer.cs": "492b5034375bd321def969b508ec148814bf30d4",
+        "Hospital.Model/Dba/NTPObPhieuThu.cs": "c059f59f512bded667a3d828698c7e1ec1db3c05",
+        "Hospital.Model/Keylist/New/KeysListObPhieuThu.cs": "c7a2cd8ac8a9b046bccda1c876cc24b9b1b1470d"
+      },
+      "aliases": [
+        "PHIẾU THU TIỀN",
+        "frmPhieuThu"
+      ],
+      "deps": [
+        "CMP-TT-DSChoThuTien",
+        "CMP-TT-DSDaThu",
+        "RPT-TT-PhieuThu",
+        "SVC-SHARED-TonKho"
+      ],
+      "doc": "modules/TT/units/SCR-TT-PhieuThu.md",
+      "doc_hash": "92f3237b8c259fb7f8628c4670e3043f01146859",
+      "analyzed_at": "2026-10-26"
+    },
+    "CMP-TT-DSChoThuTien": {
+      "status": "PENDING",
+      "rev": 0,
+      "sources": {},
+      "aliases": [],
+      "deps": [],
+      "doc": "modules/TT/units/CMP-TT-DSChoThuTien.md"
+    },
+    "CMP-TT-DSDaThu": {
+      "status": "PENDING",
+      "rev": 0,
+      "sources": {},
+      "aliases": [],
+      "deps": [],
+      "doc": "modules/TT/units/CMP-TT-DSDaThu.md"
+    },
+    "RPT-TT-PhieuThu": {
+      "status": "PENDING",
+      "rev": 0,
+      "sources": {},
+      "aliases": [],
+      "deps": [],
+      "doc": "modules/TT/units/RPT-TT-PhieuThu.md"
+    },
+    "SVC-SHARED-TonKho": {
+      "status": "PENDING",
+      "rev": 0,
+      "sources": {},
+      "aliases": [],
+      "deps": [],
+      "doc": "modules/SHARED/units/SVC-SHARED-TonKho.md"
+    }
+  },
+  "queue": [],
+  "log": [
+    {
+      "date": "2026-10-26",
+      "action": "analyze",
+      "units": [
+        "SCR-TT-PhieuThu"
+      ],
+      "note": "+9 REQ, 7 BR, 3 FN, 6 IMP, 5 Q"
+    }
+  ],
+  "menus": [
+    {
+      "caption": "ĐĂNG NHẬP",
+      "control": "btLogin",
+      "handler": "btDangnhap_Click",
+      "opens": [
+        "DK000000",
+        "FrmMainBenhAn",
+        "FrmMainDangKy",
+        "LO030100",
+        "RP010100",
+        "SA000000",
+        "TT000000",
+        "XN000000",
+        "frmMain"
+      ],
+      "in_form": "LO010100"
+    },
+    {
+      "caption": "DANH MỤC DỊCH VỤ",
+      "control": "btDMDichVu",
+      "handler": "btDMDichVu_ItemClick",
+      "opens": [
+        "Frm_DMDichVu"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC USER",
+      "control": "btDMNguoiDung",
+      "handler": "btDMNguoiDung_ItemClick",
+      "opens": [
+        "Frm_DMUser"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "THAM SỐ",
+      "control": "btThamSo",
+      "handler": "btThamSo_ItemClick",
+      "opens": [
+        "Frm_DMTSo"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC NHÂN SỰ",
+      "control": "btDMNhanSu",
+      "handler": "btDMNhanSu_ItemClick",
+      "opens": [
+        "Frm_DMNhanSu"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC PHÒNG KHÁM",
+      "control": "btDMPhongKham",
+      "handler": "btDMPhongKham_ItemClick",
+      "opens": [
+        "Frm_DMPK"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC NHÓM DỊCH VỤ",
+      "control": "btDMNhom",
+      "handler": "btDMNhom_ItemClick",
+      "opens": [
+        "Frm_DMNhomDichVu"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC ICD",
+      "control": "btDMCID",
+      "handler": "btDMCID_ItemClick",
+      "opens": [
+        "Frm_DMICD"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC ĐƠN VỊ",
+      "control": "btDMDonVi",
+      "handler": "btDMDonVi_ItemClick",
+      "opens": [
+        "Frm_DMDonVi"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC KHO",
+      "control": "btDMKho",
+      "handler": "btDMKho_ItemClick",
+      "opens": [
+        "Frm_DMKho"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC MẪU",
+      "control": "btDMMau",
+      "handler": "btDMMau_ItemClick",
+      "opens": [
+        "Frm_DMMau"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "THIẾT KẾ BÁO CÁO",
+      "control": "btReport",
+      "handler": "btReport_ItemClick",
+      "opens": [
+        "RP010100"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "THAY ĐỔI MẬT KHẨU",
+      "control": "btThayDoiMatKhau",
+      "handler": "btThayDoiMatKhau_ItemClick",
+      "opens": [
+        "LO030100"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC XÉT NGHIỆM",
+      "control": "barButtonItem2",
+      "handler": "barButtonItem2_ItemClick",
+      "opens": [
+        "Frm_DMXetNghiem"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC NHÓM XÉT NGHIỆM",
+      "control": "barButtonItem3",
+      "handler": "barButtonItem3_ItemClick",
+      "opens": [
+        "Frm_DMNhomXetNghiem"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "LỊCH LÀM VIỆC",
+      "control": "barButtonItem4",
+      "handler": "barButtonItem4_ItemClick",
+      "opens": [
+        "frmLichLamViec"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC TỈNH",
+      "control": "barButtonItem5",
+      "handler": "barButtonItem5_ItemClick",
+      "opens": [
+        "Frm_DMTinh"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC QUẬN",
+      "control": "barButtonItem6",
+      "handler": "barButtonItem6_ItemClick",
+      "opens": [
+        "Frm_DMQuan"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "ĐĂNG KÝ KHÁM",
+      "control": "barButtonItem7",
+      "handler": "barButtonItem7_ItemClick",
+      "opens": [
+        "frmDangKy"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH ĐĂNG KÝ",
+      "control": "barButtonItem8",
+      "handler": "barButtonItem8_ItemClick",
+      "opens": [
+        "frmDSDangKy"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH HẸN KHÁM",
+      "control": "barButtonItem9",
+      "handler": "barButtonItem9_ItemClick",
+      "opens": [
+        "frmDSHenKham"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "QUẢN LÝ NHẬP KHO",
+      "control": "barButtonItem10",
+      "handler": "barButtonItem10_ItemClick",
+      "opens": [
+        "frmNhapkho"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ KHÁM",
+      "control": "barButtonItem11",
+      "handler": "barButtonItem11_ItemClick",
+      "opens": [
+        "frmDSChoKham"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH ĐÃ KHÁM",
+      "control": "barButtonItem12",
+      "handler": "barButtonItem12_ItemClick",
+      "opens": [
+        "frmDSDaKham"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ SIÊU ÂM",
+      "control": "barButtonItem13",
+      "handler": "barButtonItem13_ItemClick",
+      "opens": [
+        "frmDSChoSA"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH PHIẾU SIÊU ÂM",
+      "control": "barButtonItem14",
+      "handler": "barButtonItem14_ItemClick",
+      "opens": [
+        "frmDSSieuAm"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ XÉT NGHIỆM",
+      "control": "barButtonItem15",
+      "handler": "barButtonItem15_ItemClick",
+      "opens": [
+        "frmDSChoXN"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH PHIẾU XÉT NGHIỆM",
+      "control": "barButtonItem16",
+      "handler": "barButtonItem16_ItemClick",
+      "opens": [
+        "frmDSPhieuXN"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ THU",
+      "control": "barButtonItem17",
+      "handler": "barButtonItem17_ItemClick",
+      "opens": [
+        "frmDSChoThuTien"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH PHIẾU THU",
+      "control": "barButtonItem18",
+      "handler": "barButtonItem18_ItemClick",
+      "opens": [
+        "frmDSDaThu"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH MỤC NGHỀ NGHIỆP",
+      "control": "barButtonItem19",
+      "handler": "barButtonItem19_ItemClick",
+      "opens": [
+        "Frm_DMNgheNghiep"
+      ],
+      "in_form": "frmMain"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ SIÊU ÂM",
+      "control": "btDanhSachDangKy",
+      "handler": "btDanhSachDangKy_ItemClick",
+      "opens": [
+        "frmDSChoSA"
+      ],
+      "in_form": "SA000000"
+    },
+    {
+      "caption": "DANH SÁCH ĐÃ THỰC HIỆN",
+      "control": "barButtonItem1",
+      "handler": "barButtonItem1_ItemClick",
+      "opens": [
+        "frmDSSieuAm"
+      ],
+      "in_form": "SA000000"
+    },
+    {
+      "caption": "Chuyển dịch vụ",
+      "control": "btChuyenDichVu",
+      "handler": "btChuyenDichVu_ItemClick",
+      "opens": [
+        "FrmChuyenDichVu"
+      ],
+      "in_form": "frmSieuAm"
+    },
+    {
+      "caption": "LẤY DỮ LIỆU",
+      "control": "btLayDuLieu",
+      "handler": "btLayDuLieu_Click",
+      "opens": [
+        "UNgay"
+      ],
+      "in_form": "ULichLamViec"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ XÉT NGHIỆM",
+      "control": "btDanhSachDangKy",
+      "handler": "btDanhSachDangKy_ItemClick",
+      "opens": [
+        "frmDSChoXN"
+      ],
+      "in_form": "XN000000"
+    },
+    {
+      "caption": "DANH SÁCH PHIẾU XÉT NGHIỆM",
+      "control": "barButtonItem1",
+      "handler": "barButtonItem1_ItemClick",
+      "opens": [
+        "frmDSPhieuXN"
+      ],
+      "in_form": "XN000000"
+    },
+    {
+      "caption": "BÁO CÁO TỒN KHO",
+      "control": "btBaoCaoTonKho",
+      "handler": "btBaoCaoTonKho_ItemClick",
+      "opens": [
+        "FrmBCTonKho"
+      ],
+      "in_form": "FrmMainBenhAn"
+    },
+    {
+      "caption": "DANH MỤC THUỐC",
+      "control": "barButtonItem2",
+      "handler": "barButtonItem2_ItemClick",
+      "opens": [
+        "Frm_DMThuoc"
+      ],
+      "in_form": "FrmMainBenhAn"
+    },
+    {
+      "caption": "Lập Phiếu Tạm Ứng",
+      "control": "btnLapPhieuTU",
+      "handler": "btnLapPhieuTU_ItemClick",
+      "opens": [
+        "FrmTamUng"
+      ],
+      "in_form": "FrmPhieuKhamChung"
+    },
+    {
+      "caption": "Lập Phiếu Tạm Ứng",
+      "control": "btnLapPhieuTU",
+      "handler": "btnLapPhieuTU_ItemClick",
+      "opens": [
+        "FrmTamUng"
+      ],
+      "in_form": "frmBenhAn"
+    },
+    {
+      "caption": "DANH MỤC DỊCH VỤ",
+      "control": "btDMDichVu",
+      "handler": "btDMDichVu_ItemClick",
+      "opens": [
+        "Frm_DMDichVu"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC USER",
+      "control": "btDMNguoiDung",
+      "handler": "btDMNguoiDung_ItemClick",
+      "opens": [
+        "Frm_DMUser"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "THAM SỐ",
+      "control": "btThamSo",
+      "handler": "btThamSo_ItemClick",
+      "opens": [
+        "Frm_DMTSo"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC NHÂN SỰ",
+      "control": "btDMNhanSu",
+      "handler": "btDMNhanSu_ItemClick",
+      "opens": [
+        "Frm_DMNhanSu"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC PHÒNG KHÁM",
+      "control": "btDMPhongKham",
+      "handler": "btDMPhongKham_ItemClick",
+      "opens": [
+        "Frm_DMPK"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC NHÓM DỊCH VỤ",
+      "control": "btDMNhom",
+      "handler": "btDMNhom_ItemClick",
+      "opens": [
+        "Frm_DMNhomDichVu"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC ICD",
+      "control": "btDMCID",
+      "handler": "btDMCID_ItemClick",
+      "opens": [
+        "Frm_DMICD"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC ĐƠN VỊ",
+      "control": "btDMDonVi",
+      "handler": "btDMDonVi_ItemClick",
+      "opens": [
+        "Frm_DMDonVi"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC KHO",
+      "control": "btDMKho",
+      "handler": "btDMKho_ItemClick",
+      "opens": [
+        "Frm_DMKho"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC MẪU",
+      "control": "btDMMau",
+      "handler": "btDMMau_ItemClick",
+      "opens": [
+        "Frm_DMMau"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "THIẾT KẾ BÁO CÁO",
+      "control": "btReport",
+      "handler": "btReport_ItemClick",
+      "opens": [
+        "RP010100"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "THAY ĐỔI MẬT KHẨU",
+      "control": "btThayDoiMatKhau",
+      "handler": "btThayDoiMatKhau_ItemClick",
+      "opens": [
+        "LO030100"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC XÉT NGHIỆM",
+      "control": "barButtonItem2",
+      "handler": "barButtonItem2_ItemClick",
+      "opens": [
+        "Frm_DMXetNghiem"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC NHÓM XÉT NGHIỆM",
+      "control": "barButtonItem3",
+      "handler": "barButtonItem3_ItemClick",
+      "opens": [
+        "Frm_DMNhomXetNghiem"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "LỊCH LÀM VIỆC",
+      "control": "barButtonItem4",
+      "handler": "barButtonItem4_ItemClick",
+      "opens": [
+        "frmLichLamViec"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC TỈNH",
+      "control": "barButtonItem5",
+      "handler": "barButtonItem5_ItemClick",
+      "opens": [
+        "Frm_DMTinh"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH MỤC QUẬN",
+      "control": "barButtonItem6",
+      "handler": "barButtonItem6_ItemClick",
+      "opens": [
+        "Frm_DMQuan"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "ĐĂNG KÝ KHÁM",
+      "control": "barButtonItem7",
+      "handler": "barButtonItem7_ItemClick",
+      "opens": [
+        "frmDangKy"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH SÁCH HẸN KHÁM",
+      "control": "barButtonItem9",
+      "handler": "barButtonItem9_ItemClick",
+      "opens": [
+        "frmDSHenKham"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "QUẢN LÝ NHẬP KHO",
+      "control": "barButtonItem10",
+      "handler": "barButtonItem10_ItemClick",
+      "opens": [
+        "frmNhapkho"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ KHÁM",
+      "control": "barButtonItem11",
+      "handler": "barButtonItem11_ItemClick",
+      "opens": [
+        "frmDSChoKham"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH SÁCH ĐÃ KHÁM",
+      "control": "barButtonItem12",
+      "handler": "barButtonItem12_ItemClick",
+      "opens": [
+        "frmDSDaKham"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ SIÊU ÂM",
+      "control": "barButtonItem13",
+      "handler": "barButtonItem13_ItemClick",
+      "opens": [
+        "frmDSChoSA"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH SÁCH PHIẾU SIÊU ÂM",
+      "control": "barButtonItem14",
+      "handler": "barButtonItem14_ItemClick",
+      "opens": [
+        "frmDSSieuAm"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ XÉT NGHIỆM",
+      "control": "barButtonItem15",
+      "handler": "barButtonItem15_ItemClick",
+      "opens": [
+        "frmDSChoXN"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH SÁCH PHIẾU XÉT NGHIỆM",
+      "control": "barButtonItem16",
+      "handler": "barButtonItem16_ItemClick",
+      "opens": [
+        "frmDSPhieuXN"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ THU",
+      "control": "barButtonItem17",
+      "handler": "barButtonItem17_ItemClick",
+      "opens": [
+        "frmDSChoThuTien"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "DANH SÁCH PHIẾU THU",
+      "control": "barButtonItem18",
+      "handler": "barButtonItem18_ItemClick",
+      "opens": [
+        "frmDSDaThu"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "THỐNG KÊ KHÁM BỆNH",
+      "control": "barButtonItem8",
+      "handler": "barButtonItem8_ItemClick_1",
+      "opens": [
+        "frmTKKhamBenh"
+      ],
+      "in_form": "BA000000"
+    },
+    {
+      "caption": "Dán ảnh",
+      "control": "btPaste",
+      "handler": "btPaste_Click",
+      "opens": [
+        "UImage"
+      ],
+      "in_form": "UImages"
+    },
+    {
+      "caption": "Lưu mới phác đồ",
+      "control": "lưuMớiPhácĐồToolStripMenuItem1",
+      "handler": "lưuMớiPhácĐồToolStripMenuItem1_Click",
+      "opens": [
+        "frmText"
+      ],
+      "in_form": "UT010100"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ THU TIỀN",
+      "control": "btDanhSachDangKy",
+      "handler": "btDanhSachDangKy_ItemClick",
+      "opens": [
+        "frmDSChoThuTien"
+      ],
+      "in_form": "TT000000"
+    },
+    {
+      "caption": "DANH SÁCH PHIẾU THU",
+      "control": "barButtonItem1",
+      "handler": "barButtonItem1_ItemClick",
+      "opens": [
+        "frmDSDaThu"
+      ],
+      "in_form": "TT000000"
+    },
+    {
+      "caption": "BÁO CÁO TỒN KHO",
+      "control": "btBaoCaoTonKho",
+      "handler": "btBaoCaoTonKho_ItemClick",
+      "opens": [
+        "FrmBCTonKho"
+      ],
+      "in_form": "FrmMainDangKy"
+    },
+    {
+      "caption": "DANH MỤC THUỐC",
+      "control": "barButtonItem2",
+      "handler": "barButtonItem2_ItemClick",
+      "opens": [
+        "Frm_DMThuoc"
+      ],
+      "in_form": "FrmMainDangKy"
+    },
+    {
+      "caption": "Thay đổi chỉ định",
+      "control": "thayĐổiChỉĐịnhToolStripMenuItem",
+      "handler": "thayĐổiChỉĐịnhToolStripMenuItem_Click",
+      "opens": [
+        "CD020100"
+      ],
+      "in_form": "UDSDangKy"
+    },
+    {
+      "caption": "Thay đổi thông tin bệnh nhân",
+      "control": "thayĐổiThôngTinBệnhNhânToolStripMenuItem",
+      "handler": "thayĐổiThôngTinBệnhNhânToolStripMenuItem_Click",
+      "opens": [
+        "BN020100"
+      ],
+      "in_form": "UDSDangKy"
+    },
+    {
+      "caption": "THAY ĐỔI\\r\\nĐĂNG KÝ",
+      "control": "btEDIT_DK",
+      "handler": "btEDIT_DK_Click",
+      "opens": [
+        "CD020100"
+      ],
+      "in_form": "UDSDangKy"
+    },
+    {
+      "caption": "THAY ĐỔI THÔNG TIN \\r\\nBỆNH NHÂN",
+      "control": "btEDIT_THE",
+      "handler": "btEDIT_THE_Click",
+      "opens": [
+        "BN020100"
+      ],
+      "in_form": "UDSDangKy"
+    },
+    {
+      "caption": "DANH SÁCH ĐĂNG KÝ",
+      "control": "btDanhSachDangKy",
+      "handler": "btDanhSachDangKy_ItemClick",
+      "opens": [
+        "frmDSDangKy"
+      ],
+      "in_form": "DK000000"
+    },
+    {
+      "caption": "ĐĂNG KÝ BỆNH NHÂN",
+      "control": "barButtonItem1",
+      "handler": "barButtonItem1_ItemClick",
+      "opens": [
+        "frmDangKy"
+      ],
+      "in_form": "DK000000"
+    },
+    {
+      "caption": "DANH SÁCH CHỜ THU TIỀN",
+      "control": "barButtonItem2",
+      "handler": "barButtonItem2_ItemClick",
+      "opens": [
+        "frmDSChoThuTien"
+      ],
+      "in_form": "DK000000"
+    },
+    {
+      "caption": "DANH SÁCH ĐÃ THU",
+      "control": "barButtonItem3",
+      "handler": "barButtonItem3_ItemClick",
+      "opens": [
+        "frmDSDaThu"
+      ],
+      "in_form": "DK000000"
+    },
+    {
+      "caption": "QUẢN LÝ NHẬP KHO",
+      "control": "barButtonItem4",
+      "handler": "barButtonItem4_ItemClick",
+      "opens": [
+        "frmNhapkho"
+      ],
+      "in_form": "DK000000"
+    },
+    {
+      "caption": "DANH SÁCH HẸN KHÁM",
+      "control": "barButtonItem5",
+      "handler": "barButtonItem5_ItemClick",
+      "opens": [
+        "frmDSHenKham"
+      ],
+      "in_form": "DK000000"
+    },
+    {
+      "caption": "Thay đổi thông tin bệnh nhân",
+      "control": "thayĐổiThôngTinBệnhNhânToolStripMenuItem",
+      "handler": "thayĐổiThôngTinBệnhNhânToolStripMenuItem_Click",
+      "opens": [
+        "BN020100"
+      ],
+      "in_form": "UBenhNhan"
+    },
+    {
+      "caption": "Cập nhật nợ",
+      "control": "mnCapNhatNo",
+      "handler": "mnCapNhatNo_Click",
+      "opens": [
+        "FrmCapNhatNo"
+      ],
+      "in_form": "UBenhNhan"
+    },
+    {
+      "caption": "Thay đổi thông tin bệnh nhân",
+      "control": "thayĐổiThôngTinBệnhNhânToolStripMenuItem1",
+      "handler": "thayĐổiThôngTinBệnhNhânToolStripMenuItem1_Click",
+      "opens": [
+        "BN020100"
+      ],
+      "in_form": "UBenhNhan"
+    },
+    {
+      "caption": "Cập nhật nợ",
+      "control": "cậpNhậtNợToolStripMenuItem",
+      "handler": "cậpNhậtNợToolStripMenuItem_Click",
+      "opens": [
+        "FrmCapNhatNo"
+      ],
+      "in_form": "UBenhNhan"
+    }
+  ],
+  "unwired_handlers": [
+    {
+      "in_form": "frmMain",
+      "handler": "btDangKy_ItemClick",
+      "opens": [
+        "frmDangKy"
+      ]
+    },
+    {
+      "in_form": "frmMain",
+      "handler": "btBenhAn_ItemClick",
+      "opens": [
+        "frmDSChoKham"
+      ]
+    },
+    {
+      "in_form": "frmMain",
+      "handler": "btThuTien_ItemClick",
+      "opens": [
+        "frmDSChoThuTien"
+      ]
+    },
+    {
+      "in_form": "frmMain",
+      "handler": "btCDHA_ItemClick",
+      "opens": [
+        "CD010100"
+      ]
+    },
+    {
+      "in_form": "BA000000",
+      "handler": "btDangKy_ItemClick",
+      "opens": [
+        "frmDangKy"
+      ]
+    },
+    {
+      "in_form": "BA000000",
+      "handler": "btBenhAn_ItemClick",
+      "opens": [
+        "frmDSChoKham"
+      ]
+    },
+    {
+      "in_form": "BA000000",
+      "handler": "btThuTien_ItemClick",
+      "opens": [
+        "frmDSChoThuTien"
+      ]
+    },
+    {
+      "in_form": "BA000000",
+      "handler": "btCDHA_ItemClick",
+      "opens": [
+        "CD010100"
+      ]
+    },
+    {
+      "in_form": "BA000000",
+      "handler": "barButtonItem8_ItemClick",
+      "opens": [
+        "frmDSDangKy"
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+### REQ-<MODULE>-<ShortName>-<nnn> - <short title>
+- **Origin**: LEGACY | NEW | CHANGED (provenance; never changes)
+- **Status**: ACTIVE | SUPERSEDED | DROPPED | NEEDS-REVIEW
+- **Priority**: Must | Should | Could (default Must for LEGACY)
+- **Statement**: The system shall ... (one idea, verifiable)
+- **Trigger / Preconditions**:
+- **Main flow**:
+- **Alternative / error flows**:
+- **Related business rules**: BR-...
+- **Acceptance criteria**: Given ... When ... Then ...
+- **Legacy source**: <file:method:line> (for NEW: "User request, <date>")
+- **Confidence**: Certain | Inferred | Ask
+- **Decision**: Keep | Drop | Ask (required for legacy quirks)
+- **Assessment**: OK | Suspect | Wrong | Missing | Outdated (anything but OK -> `IMP-...`)
+- **Links**: FN-... (if based on a calculated function); replaces/replaced by REQ-... (if CHANGED)

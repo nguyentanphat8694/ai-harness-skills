@@ -1,0 +1,29 @@
+{
+  "skill_name": "winforms-screen-to-requirements",
+  "evals": [
+    {
+      "id": 1,
+      "prompt": "Here is the source of our old WinForms clinic app at ./legacy-src. I'm going to show you screens one by one and I want a full set of docs to rebuild it. Start.",
+      "expected_output": "Runs bootstrap: state.py init, inventory.py, writes APP-OVERVIEW.md and NAVIGATION.md skeleton, reports inventory size and invites the first screen. Does NOT deeply analyse any screen yet.",
+      "files": []
+    },
+    {
+      "id": 2,
+      "prompt": "[screenshot of a form titled 'Khám thai' with fields 'Ngày kinh cuối', 'Ngày dự sinh', 'Tuổi thai' and buttons 'Lưu', 'In phiếu'] This is the screen I want you to read next.",
+      "expected_output": "Reads visible strings, runs find_screen.py, states the assumed form, traces deps with trace_deps.py, creates registered units, writes FN entries (with >=3 test vectors) for the due-date and gestational-age calculations, raises IMPs separately from legacy REQs, passes check_unit.py, updates NAVIGATION/DATA-MODEL/ROLES-MATRIX, commits and reports coverage and next screens.",
+      "files": []
+    },
+    {
+      "id": 3,
+      "prompt": "For the Khám thai screen you already documented: in the new app the due date must use Naegele's rule from the last-period date and block future dates. Also drop the 'In phiếu' button.",
+      "expected_output": "Keeps legacy REQs untouched; creates CHANGED REQ superseding the legacy one and DROPPED status for the print requirement; logs CHANGELOG; updates STATE counters via scripts; at most one clarifying question.",
+      "files": []
+    },
+    {
+      "id": 4,
+      "prompt": "I think we've read enough screens. What's left, and can you put together the final document?",
+      "expected_output": "Runs check/index, lists non-DONE units, open questions and PROPOSED IMPs, runs build_srs.py, preserves manual blocks, reports gaps honestly rather than hiding them.",
+      "files": []
+    }
+  ]
+}
